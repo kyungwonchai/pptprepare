@@ -1,7 +1,9 @@
-"""실습 캡처 + 말풍선 데모 — Cursor · Cline · Gemini (슬라이드 44~55).
+"""실습 캡처 + 말풍선 — Cline 전용 (슬라이드 26~35).
 
-이미지는 저장소에 포함된 SVG 목업입니다. 실제 화면으로 바꾸려면 static/img/tutorials/ 에
-같은 이름의 PNG 등을 두고 image_path 확장자만 조정하면 됩니다.
+이미지는 `static/img/tutorials/cline_01.svg` … `cline_10.svg` 목업입니다.
+실제 VS Code 캡처로 바꾸려면 같은 폴더에 PNG를 두고 `image_path`만 조정하면 됩니다.
+
+설명 문구는 제품 화면의 영어 메뉴 대신, 수강자가 읽기 쉬운 한글 용어를 병기합니다.
 """
 
 from __future__ import annotations
@@ -9,262 +11,211 @@ from __future__ import annotations
 from typing import Any
 
 TOOL_TUTORIAL_SLIDES: list[dict[str, Any]] = [
-    # —— Cursor ——
     {
-        "series": "cursor",
-        "kicker": "실습 데모 · Cursor",
-        "page_title": "① 워크스페이스로 폴더 열기",
-        "lead": "레포 루트를 연 상태가 기본입니다. 파일 트리가 보여야 맥락이 안정됩니다.",
-        "image_path": "img/tutorials/cursor_01.svg",
-        "caption": "File → Open Folder(또는 드래그)로 프로젝트 루트를 엽니다.",
+        "series": "cline",
+        "kicker": "Cline 실습",
+        "page_title": "① 설치 — 비주얼 스튜디오 코드 확장으로 Cline 쓰기",
+        "lead": (
+            "비주얼 스튜디오 코드를 열고 **확장 프로그램** 패널에서 「Cline」을 검색해 **설치**합니다. "
+            "왼쪽 **사이드바**에 Cline 아이콘이 보이면 준비 완료입니다. 회사 PC는 **확장 마켓플레이스**·외부 **애플리케이션 프로그래밍 인터페이스(이하 API)** 사용 정책을 먼저 확인하세요."
+        ),
+        "image_path": "img/tutorials/cline_01.svg",
+        "caption": "확장 프로그램 → 검색: Cline → 설치 → 사이드바에서 패널 열기.",
         "bubbles": [
             {
-                "text": "빈 폴더가 아니라, package.json·README가 있는 「최상위」를 여는 게 좋습니다.",
-                "top": 8,
-                "left": 52,
-                "w": 44,
-                "align": "right",
-            },
-            {
-                "text": "처음이면 터미널에서 `git status`로 깨끗한지 한 번만 확인해 두면 이후가 편합니다.",
-                "top": 58,
-                "left": 6,
-                "w": 40,
+                "text": "설치 직후 바로 맡기기보다 「**버전·출시 노트**」를 한 번만 훑으면 이후 질문이 줄어듭니다.",
                 "align": "left",
             },
         ],
         "foot_note": (
-            "이 장부터 이미지는 「강의용 목업」입니다. 본인 PC 캡처로 바꾸려면 `static/img/tutorials/`에 "
-            "같은 파일명의 PNG를 넣고 `slide_tool_tutorials.py`의 해당 `image_path`만 바꾸면 됩니다."
+            "도형은 굵은 테두리·큰 글자의 벡터 다이어그램입니다. 실제 수업에는 본인 환경 캡처로 바꿔도 됩니다."
         ),
     },
     {
-        "series": "cursor",
-        "kicker": "실습 데모 · Cursor",
-        "page_title": "② 채팅에 @로 파일 붙이기",
-        "lead": "말만 하지 말고, ‘이 파일 봐’라고 「참조」를 걸면 답이 좁아집니다.",
-        "image_path": "img/tutorials/cursor_02.svg",
-        "caption": "채팅 입력창에서 @ 파일명 또는 @폴더로 맥락을 붙입니다.",
-        "bubbles": [
-            {
-                "text": "에러가 난 파일만 @ 하면, 불필요한 다른 코드 설명이 줄어듭니다.",
-                "top": 12,
-                "left": 4,
-                "w": 38,
-                "align": "left",
-            },
-            {
-                "text": "답이 길면 ‘한 파일만 고쳐’ ‘diff만’처럼 「출력 형식」을 한 줄 덧붙입니다.",
-                "top": 42,
-                "left": 48,
-                "w": 48,
-                "align": "right",
-            },
-        ],
-    },
-    {
-        "series": "cursor",
-        "kicker": "실습 데모 · Cursor",
-        "page_title": "③ 인라인 · 컴포저로 국소 수정",
-        "lead": "채팅이 아니라 「보이는 코드」를 직접 가리킬 때 씁니다.",
-        "image_path": "img/tutorials/cursor_03.svg",
-        "caption": "블록을 드래그한 뒤 인라인(또는 Composer)으로 ‘이 부분만’ 요청합니다.",
-        "bubbles": [
-            {
-                "text": "단축키는 제품 버전마다 다릅니다. 메뉴에 ‘Inline’ ‘Composer’로 찾아보세요.",
-                "top": 10,
-                "left": 50,
-                "w": 46,
-                "align": "right",
-            },
-            {
-                "text": "한 함수·한 문단 단위로 잘라서 부탁하면 되돌리기도 쉽습니다.",
-                "top": 62,
-                "left": 8,
-                "w": 42,
-                "align": "left",
-            },
-        ],
-    },
-    {
-        "series": "cursor",
-        "kicker": "실습 데모 · Cursor",
-        "page_title": "④ 터미널에서 빌드·실행 확인",
-        "lead": "고친 뒤 「같은 화면에서」 돌려 보는 습관이 오류를 줄입니다.",
-        "image_path": "img/tutorials/cursor_04.svg",
-        "caption": "하단 터미널 패널을 열고 npm/pnpm 등 팀이 쓰는 명령을 실행합니다.",
-        "bubbles": [
-            {
-                "text": "빨간 로그가 나오면 「그 블록을 복사」해 채팅에 붙이면 다음 지시가 정확해집니다.",
-                "top": 18,
-                "left": 48,
-                "w": 48,
-                "align": "right",
-            },
-        ],
-    },
-    # —— Cline ——
-    {
         "series": "cline",
-        "kicker": "실습 데모 · Cline",
-        "page_title": "① VS Code에 Cline 설치",
-        "lead": "확장(Extensions)에서 설치하고, 사이드바에 아이콘이 뜨는지 확인합니다.",
-        "image_path": "img/tutorials/cline_01.svg",
-        "caption": "마켓플레이스에서 Cline을 검색 → Install.",
-        "bubbles": [
-            {
-                "text": "회사 PC면 「마켓플레이스 허용」 여부를 먼저 확인하세요.",
-                "top": 14,
-                "left": 48,
-                "w": 46,
-                "align": "right",
-            },
-            {
-                "text": "설치 후 「API 키·모델」 연결은 팀 정책에 맞게만.",
-                "top": 55,
-                "left": 6,
-                "w": 42,
-                "align": "left",
-            },
-        ],
-    },
-    {
-        "series": "cline",
-        "kicker": "실습 데모 · Cline",
-        "page_title": "② 작업 지시 입력 (Plan / Act)",
-        "lead": "한 번에 크게 맡기기 전에, 「무엇을 하면 성공인지」 한 문장을 적습니다.",
+        "kicker": "Cline 실습",
+        "page_title": "② 모델·API — 누구 키로, 어떤 모델로",
+        "lead": (
+            "Cline은 「본인이 연결한 **API 키**」(또는 팀에서 허용한 **모델 제공 서비스**)로 동작하는 경우가 많습니다. "
+            "앤스로픽·오픈에이아이 등 **제품 화면 이름이 바뀌어도 원리는 같습니다**: 키는 **환경 변수**·운영체제 **비밀 저장소**에 두고, 「저장소·슬라이드·채팅에 절대 붙이지 않습니다.」"
+        ),
         "image_path": "img/tutorials/cline_02.svg",
-        "caption": "Cline 패널에 목표·제약을 적습니다. (버전에 따라 Plan/Act 표기가 다를 수 있음)",
+        "caption": "설정 → Cline에서 모델 제공자·모델·요금제에 맞게 선택.",
         "bubbles": [
             {
-                "text": "‘전부 리팩터’보다 ‘이 API만 분리’처럼 「범위」를 좁힐수록 안전합니다.",
-                "top": 8,
-                "left": 4,
-                "w": 44,
+                "text": "회사라면 「보안팀이 허용한 모델·접속 주소」만. 개인 키를 업무 저장소에 넣지 않기.",
                 "align": "left",
             },
             {
-                "text": "레포가 열려 있어야 파일 읽기·쓰기가 이어집니다.",
-                "top": 48,
-                "left": 46,
-                "w": 48,
+                "text": "**토큰**(입출력 길이)이 길수록 비용이 늘어납니다. 「불필요한 폴더를 열어 둔 채」 돌리지 않기.",
                 "align": "right",
             },
         ],
     },
     {
         "series": "cline",
-        "kicker": "실습 데모 · Cline",
-        "page_title": "③ diff 확인 후 승인",
-        "lead": "자동으로 고쳐도 「사람이 눈으로」 한 번은 봅니다.",
+        "kicker": "Cline 실습",
+        "page_title": "③ 폴더 열기 — 작업 폴더 루트가 ‘작업 무대’",
+        "lead": (
+            "「**파일 → 폴더 열기**」로 프로젝트 **최상위 폴더**(패키지 설정 파일·설명서가 있는 곳)를 엽니다. "
+            "상위 폴더만 열어 두면 Cline이 다른 저장소까지 섞어 읽을 수 있어요. **터미널**에서 `git status`로 「깨끗한지·어느 **가지(브랜치)**인지」 확인해 두면 안전합니다."
+        ),
         "image_path": "img/tutorials/cline_03.svg",
-        "caption": "제안된 변경을 Accept/Reject — 민감 파일은 더 신중히.",
+        "caption": "**탐색기**에 열린 루트가 곧 Cline이 읽고 쓸 수 있는 범위의 기준.",
         "bubbles": [
             {
-                "text": "삭제·권한·환경 변수 줄이 「빨간 줄」이면 특히 천천히 읽습니다.",
-                "top": 12,
-                "left": 50,
-                "w": 46,
+                "text": "‘바탕화면 전체’를 열지 말고 「한 저장소만」 열기.",
+                "align": "right",
+            },
+            {
+                "text": "모노레포면 「어느 패키지까지」 손댈지 요청에 적어 주기.",
+                "align": "left",
+            },
+        ],
+    },
+    {
+        "series": "cline",
+        "kicker": "Cline 실습",
+        "page_title": "④ 계획과 실행 — 먼저 계획 보고 적용",
+        "lead": (
+            "「**계획**」(Plan, 제품마다 이름이 다를 수 있음)은 큰 작업을 「단계·파일 단위로 나누어 보여 준 뒤」 진행하는 흐름에 가깝고, "
+            "「**실행**」(Act)은 승인된 변경을 「실제로 적용」하는 쪽에 가깝습니다. 제품 버전마다 버튼 이름이 다를 수 있으니, 「먼저 계획을 읽고」 범위가 맞는지 확인하세요."
+        ),
+        "image_path": "img/tutorials/cline_04.svg",
+        "caption": "한 번에 ‘전부 구조 바꾸기’보다 ‘이 모듈만’처럼 범위를 나누기.",
+        "bubbles": [
+            {
+                "text": "계획 단계에서 「불필요한 파일까지 건드리는지」 미리 보면 사고가 줄어듭니다.",
+                "align": "left",
+            },
+            {
+                "text": "실행 직전에 「환경 변수·비밀 파일」이 **변경 내용(diff)**에 없는지 한 번 더.",
                 "align": "right",
             },
         ],
     },
     {
         "series": "cline",
-        "kicker": "실습 데모 · Cline",
-        "page_title": "④ 터미널 로그로 디버깅",
-        "lead": "실패한 명령 출력은 「그대로 복사」해 질문에 넣으면 됩니다.",
-        "image_path": "img/tutorials/cline_04.svg",
-        "caption": "터미널에 나온 에러 전체를 붙이고 ‘원인만 짧게’라고 해도 좋습니다.",
+        "kicker": "Cline 실습",
+        "page_title": "⑤ 요청 문장 — 목표·제약·완료 조건을 한 블록에",
+        "lead": (
+            "좋은 요청은 대략 이렇게 나뉩니다: 「무엇을」(기능/버그), 「어디까지」(파일·경로), 「어떻게 검증」(테스트·수동 확인), 「하지 말 것」(옛 코드 유지·API 변경 금지). "
+            "‘잘 고쳐줘’보다 「이 함수만 분리하고 기존 호출부는 유지」처럼 구체적일수록 결과가 안정적입니다."
+        ),
+        "image_path": "img/tutorials/cline_05.svg",
+        "caption": "입력창에 예시 데이터·오류 메시지·기대 동작을 같이 붙이기.",
         "bubbles": [
             {
-                "text": "‘안 돼요’만 말하지 말고, 「명령 + 로그 앞부분」까지 같이.",
-                "top": 20,
-                "left": 6,
-                "w": 44,
+                "text": "「언어·프레임워크 버전」(예: 파이썬 3.11, 플라스크 3)을 한 줄 넣으면 엉뚱한 답이 줄어듭니다.",
+                "align": "right",
+            },
+            {
+                "text": "여러 파일을 건드리게 하려면 「우선순위」(1. 동작 2. 스타일)를 적어 주기.",
                 "align": "left",
             },
         ],
     },
-    # —— Gemini ——
     {
-        "series": "gemini",
-        "kicker": "실습 데모 · Gemini",
-        "page_title": "① 질문을 한 번에 구체적으로",
-        "lead": "Gemini(웹/앱)는 「목적·제약·톤」을 같이 적을수록 초안이 좋아집니다.",
-        "image_path": "img/tutorials/gemini_01.svg",
-        "caption": "예: ‘누구에게 / 몇 분 분량 / 금지어 / 말투’를 한 블록에.",
+        "series": "cline",
+        "kicker": "Cline 실습",
+        "page_title": "⑥ 맥락 — 골뱅이(@)로 파일·폴더 지정, 빼둘 것 정리",
+        "lead": (
+            "편집기에서 「**골뱅이(@) 파일명**」 또는 폴더를 붙이면 그 부분만 집중해서 읽습니다. "
+            "반대로 「node_modules, .venv, dist, build」는 보통 제외하고, 필요하면 `.clineignore` 또는 팀 규칙으로 「읽지 말아야 할 경로」를 정리합니다."
+        ),
+        "image_path": "img/tutorials/cline_06.svg",
+        "caption": "짧은 질문은 골뱅이로 한두 파일만, 큰 구조 개편은 폴더 범위를 명시.",
         "bubbles": [
             {
-                "text": "민감한 회사 정보는 「가짜 수치」로 바꿔 먼저 문장 구조만 잡아도 됩니다.",
-                "top": 10,
-                "left": 48,
-                "w": 48,
+                "text": "민감한 「**.env·키 파일**」은 실수로 골뱅이로 넣지 않도록 탐색기에서 숨기거나 무시 목록에 넣기.",
+                "align": "left",
+            },
+            {
+                "text": "‘전체 검색해’보다 「어느 폴더 아래만」이라고 적는 편이 안전합니다.",
                 "align": "right",
             },
         ],
     },
     {
-        "series": "gemini",
-        "kicker": "실습 데모 · Gemini",
-        "page_title": "② 모델 · AI Studio",
-        "lead": "빠른 응답이 필요하면 Flash 계열, 깊은 추론이 필요하면 Pro 계열을 고릅니다.",
-        "image_path": "img/tutorials/gemini_02.svg",
-        "caption": "Google AI Studio는 API·프로토타입용 — 키는 절대 슬라이드·Git에 넣지 않기.",
+        "series": "cline",
+        "kicker": "Cline 실습",
+        "page_title": "⑦ 변경 내용 검토 — 적용 전에 꼭 볼 것",
+        "lead": (
+            "제안된 변경은 「**변경 내용(차이, diff)** 한 줄 한 줄」이 책임질 영역입니다. "
+            "「삭제된 줄·권한·의존성·데이터 이전」이 섞였는지 보고, 이상하면 **거절**한 뒤 요청을 좁혀 다시 시도합니다. 자동 생성이라도 「검토 없이 **병합**하지 않기」가 팀 규칙이 됩니다."
+        ),
+        "image_path": "img/tutorials/cline_07.svg",
+        "caption": "초록(추가)·빨강(삭제)을 특히 천천히. 설정 파일·**지속 통합(CI)** 스크립트는 더 신중히.",
         "bubbles": [
             {
-                "text": "제품 화면은 업데이트될 수 있어, 「공식 문서의 모델 이름」을 기준으로 삼으세요.",
-                "top": 14,
-                "left": 4,
-                "w": 44,
+                "text": "「같은 이름의 함수가 두 군데」 바뀌지 않았는지, 호출부까지 맞는지 확인.",
+                "align": "right",
+            },
+            {
+                "text": "**서식(포매터)**만 바뀐 것처럼 보여도 「숨은 로직 변경」이 없는지 스크롤 끝까지.",
+                "align": "left",
+            },
+        ],
+    },
+    {
+        "series": "cline",
+        "kicker": "Cline 실습",
+        "page_title": "⑧ 터미널 — 명령 제안이 오면",
+        "lead": (
+            "Cline이 「설치·빌드·테스트」를 위해 **터미널** 명령을 제안할 수 있습니다. "
+            "「실행 전에 무엇을 하는 명령인지」 읽고, `rm -rf`·`DROP`·운영 **웹 주소** 같은 위험한 패턴은 승인하지 않습니다. 팀 표준이면 `npm test` / `pytest` 등 「정해진 스크립트」를 요청에 포함시키세요."
+        ),
+        "image_path": "img/tutorials/cline_08.svg",
+        "caption": "편집기 안 **통합 터미널**에서 출력을 복사해 같은 대화에 다시 붙이면 다음 지시가 정확해집니다.",
+        "bubbles": [
+            {
+                "text": "「네트워크·외부 API 호출」이 포함된 명령은 회사 정책 확인 후.",
                 "align": "left",
             },
             {
-                "text": "Studio에서 만든 프롬프트는 나중에 「팀 룰」로 옮기기 좋습니다.",
-                "top": 52,
-                "left": 46,
-                "w": 48,
+                "text": "윈도·맥·리눅스 **경로·명령 입력기(셸)** 차이를 요청에 적어 두면 재시도가 줄어듭니다.",
                 "align": "right",
             },
         ],
     },
     {
-        "series": "gemini",
-        "kicker": "실습 데모 · Gemini",
-        "page_title": "③ 이미지·캡처로 물어보기",
-        "lead": "UI 버그·표 디자인은 「말보다 스크린샷」이 빠른 경우가 많습니다.",
-        "image_path": "img/tutorials/gemini_03.svg",
-        "caption": "캡처를 넣고 ‘이 부분만’ ‘기대한 동작’을 적습니다.",
+        "series": "cline",
+        "kicker": "Cline 실습",
+        "page_title": "⑨ 실패 루프 — 오류 전체·재현 순서",
+        "lead": (
+            "명령이 실패하면 터미널에 나온 「**오류 블록 전체**」(위쪽 몇 줄의 명령 포함)를 복사해 Cline에 붙입니다. "
+            "‘안 돼요’ 대신 「어떤 명령 → 어떤 출력 → 기대한 것」 순서로 적으면, 원인 좁히기가 빨라집니다. 같은 오류가 나면 「이전에 시도한 수정」을 한 줄로 요약해 주면 중복 작업을 줄일 수 있습니다."
+        ),
+        "image_path": "img/tutorials/cline_09.svg",
+        "caption": "**호출 스택**(스택 트레이스)이 길면 상·하단을 잘라 내지 말고, 가능하면 전체를 붙이기.",
         "bubbles": [
             {
-                "text": "개인정보·주소창은 「가리고」 올리기.",
-                "top": 8,
-                "left": 50,
-                "w": 44,
+                "text": "「환경 변수 미설정」인지, 「포트 충돌」인지 로그 키워드부터 짚어 달라고 요청 가능.",
                 "align": "right",
+            },
+            {
+                "text": "테스트가 실패하면 「실패한 테스트 이름만」 따로 붙여 주기.",
+                "align": "left",
             },
         ],
     },
     {
-        "series": "gemini",
-        "kicker": "실습 데모 · Gemini",
-        "page_title": "④ Google 워크스페이스와 함께",
-        "lead": "Gmail·Docs·Drive 등과 묶인 기능은 「계정·지역·요금제」에 따라 다릅니다.",
-        "image_path": "img/tutorials/gemini_04.svg",
-        "caption": "메일 초안·문서 요약 등 — 회사 정책 허용 범위 안에서만.",
+        "series": "cline",
+        "kicker": "Cline 실습",
+        "page_title": "⑩ 마무리 — 저장 단위로 끊기(커밋·병합 요청)",
+        "lead": (
+            "한 번에 큰 덩어리보다 「작은 **저장 단위(커밋)**」이 검토·되돌리기에 유리합니다. "
+            "Cline으로 여러 파일을 고쳤다면 「논리 단위로 나누어 커밋」하고, **병합 요청(풀 리퀘스트)** 설명에는 「무엇을 왜 바꿨는지·어떻게 테스트했는지」를 적습니다. 팀에 「Cline 사용 시 검토 규칙」이 있으면 그에 맞춥니다."
+        ),
+        "image_path": "img/tutorials/cline_10.svg",
+        "caption": "**소스 제어**에서 변경 내용을 다시 한 번 → 커밋 메시지는 팀 관례에 맞게.",
         "bubbles": [
             {
-                "text": "외부로 나가는 메일은 「자동 발송 전」에 사람이 꼭 읽기.",
-                "top": 22,
-                "left": 6,
-                "w": 46,
+                "text": "「자동 생성 코드」라도 작성자는 본인. **지속 통합** 실패 시 로그를 Cline에 넘겨 수정.",
                 "align": "left",
             },
             {
-                "text": "‘검색 연동’이 켜져 있으면 「어디까지 인용되는지」 UI를 확인하세요.",
-                "top": 58,
-                "left": 44,
-                "w": 50,
+                "text": "다음 사람을 위해 「애매한 이름의 파일·함수」는 사람이 한 번 더 다듬기.",
                 "align": "right",
             },
         ],

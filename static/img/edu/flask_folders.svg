@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
+  <rect width="960" height="540" fill="#0a0f18"/>
+  <text x="48" y="44" fill="#38bdf8" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="24" font-weight="bold">Folder layout</text>
+  <rect x="48" y="70" width="280" height="90" rx="14" fill="#1e293b" stroke="#94a3b8" stroke-width="4"/>
+  <text x="188.0" y="106" text-anchor="middle" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="20" font-weight="700">app.py</text>
+  <text x="188.0" y="132" text-anchor="middle" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="14">entry</text>
+  <rect x="48" y="180" width="280" height="90" rx="14" fill="#111827" stroke="#94a3b8" stroke-width="4"/>
+  <text x="188.0" y="216" text-anchor="middle" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="20" font-weight="700">templates/</text>
+  <text x="188.0" y="242" text-anchor="middle" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="14">HTML</text>
+  <rect x="48" y="290" width="280" height="90" rx="14" fill="#1e293b" stroke="#94a3b8" stroke-width="4"/>
+  <text x="188.0" y="326" text-anchor="middle" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="20" font-weight="700">static/</text>
+  <text x="188.0" y="352" text-anchor="middle" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="14">css js</text>
+  <rect x="380" y="70" width="532" height="310" rx="14" fill="#111827" stroke="#22c55e" stroke-width="5"/>
+  <text x="646.0" y="106" text-anchor="middle" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="20" font-weight="700">Why split</text>
+  <text x="646.0" y="132" text-anchor="middle" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="14">url_for(static)</text>
+</svg>

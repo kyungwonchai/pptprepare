@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Any
 
-# 슬라이드 16 — AI 에이전트 (전문 약어 최소화)
+# 슬라이드 10 — AI 에이전트 (전문 약어 최소화)
 TECH_AGENT: dict[str, Any] = {
     "kicker": "인공지능 활용",
     "page_title": "AI 에이전트가 해 주는 것",
@@ -42,7 +42,7 @@ TECH_AGENT: dict[str, Any] = {
     ],
 }
 
-# 슬라이드 17 — 파이썬으로 할 수 있는 것 (기존 17+18 통합, 라이브러리 나열 최소화)
+# 슬라이드 11 — 파이썬으로 할 수 있는 것 (기존 17+18 통합, 라이브러리 나열 최소화)
 TECH_PYTHON_WHAT: dict[str, Any] = {
     "kicker": "파이썬 한 가지 언어로",
     "page_title": "파이썬으로 할 수 있는 것",
@@ -105,7 +105,7 @@ TECH_PYTHON_WHAT: dict[str, Any] = {
     ],
 }
 
-# 슬라이드 18 — Playwright (이전 19)
+# 슬라이드 12 — Playwright (이전 19)
 TECH_PLAYWRIGHT: dict[str, Any] = {
     "kicker": "목적 유형 보강",
     "page_title": "브라우저 자동화 (Playwright)",

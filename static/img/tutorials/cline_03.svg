@@ -1,11 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
-  <rect width="960" height="540" fill="#0f172a"/>
-  <rect x="48" y="48" width="864" height="200" fill="#111827" stroke="#334155" rx="4"/>
-  <text x="72" y="88" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="13">| À½ diff</text>
-  <rect x="72" y="108" width="360" height="24" fill="rgba(34,197,94,0.2)"/>
-  <rect x="72" y="140" width="200" height="24" fill="rgba(248,113,113,0.2)"/>
-  <text x="72" y="200" fill="#64748b" font-family="system-ui,sans-serif" font-size="11">Accept / Reject</text>
-  <rect x="48" y="280" width="864" height="200" fill="#0c1222" stroke="#334155" rx="4"/>
-  <text x="72" y="320" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">¹x Ð - }0</text>
-  <text x="72" y="520" fill="#475569" font-family="system-ui,sans-serif" font-size="11">Cline  diff · ¹x (placeholder)</text>
+  <rect width="960" height="540" fill="#0a0f18"/>
+  <text x="48" y="44" fill="#38bdf8" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="22" font-weight="bold">3. Open Folder (root)</text>
+  <rect x="40" y="64" width="300" height="420" rx="14" fill="#111827" stroke="#94a3b8" stroke-width="4"/>
+  <text x="190.0" y="100" text-anchor="middle" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="20" font-weight="700">EXPLORER</text>
+  <text x="80" y="130" fill="#22c55e" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="16" font-weight="bold">project/</text>
+  <text x="96" y="168" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="15">data/</text>
+  <text x="96" y="200" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="15">src/</text>
+  <rect x="380" y="64" width="540" height="420" rx="14" fill="#1e293b" stroke="#94a3b8" stroke-width="4"/>
+  <text x="650.0" y="100" text-anchor="middle" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="20" font-weight="700">Editor</text>
+  <text x="650.0" y="126" text-anchor="middle" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="14">One repo = one workspace</text>
+  <line x1="340" y1="270" x2="380" y2="270" stroke="#94a3b8" stroke-width="5" marker-end="url(#arr)"/>
 </svg>

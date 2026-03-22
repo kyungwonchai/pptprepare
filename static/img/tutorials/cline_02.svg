@@ -1,12 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
-  <rect width="960" height="540" fill="#0f172a"/>
-  <rect x="480" y="0" width="480" height="540" fill="#0c1222" stroke="#334155"/>
-  <text x="504" y="40" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="14">CLINE</text>
-  <rect x="504" y="64" width="432" height="56" fill="#1e293b" rx="6" stroke="#475569"/>
-  <text x="520" y="98" fill="#cbd5e1" font-family="system-ui,sans-serif" font-size="12">ë≈ ¿‹ Ö%&</text>
-  <rect x="504" y="140" width="432" height="200" fill="#020617" rx="6" stroke="#334155"/>
-  <text x="520" y="176" fill="#64748b" font-family="ui-monospace,monospace" font-size="11">plan / act ®‹ Ò</text>
-  <rect x="48" y="48" width="400" height="440" fill="#111827" stroke="#334155" rx="4"/>
-  <text x="72" y="88" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">EXPLORER</text>
-  <text x="72" y="520" fill="#475569" font-family="system-ui,sans-serif" font-size="11">Cline  ë≈ Ö% (placeholder)</text>
+  <rect width="960" height="540" fill="#0a0f18"/>
+  <text x="48" y="48" fill="#fbbf24" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="22" font-weight="bold">2. API / Model</text>
+  <rect x="48" y="70" width="420" height="220" rx="14" fill="#1e293b" stroke="#94a3b8" stroke-width="4"/>
+  <text x="258.0" y="106" text-anchor="middle" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="20" font-weight="700">Provider</text>
+  <text x="258.0" y="132" text-anchor="middle" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="14">Anthropic / OpenAI ...</text>
+  <rect x="500" y="70" width="412" height="220" rx="14" fill="#111827" stroke="#22c55e" stroke-width="5"/>
+  <text x="706.0" y="106" text-anchor="middle" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="20" font-weight="700">API Key</text>
+  <text x="706.0" y="132" text-anchor="middle" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="14">env / OS secret</text>
+  <line x1="468" y1="180" x2="500" y2="180" stroke="#94a3b8" stroke-width="5" marker-end="url(#arr)"/>
+  <rect x="48" y="320" width="864" height="180" rx="14" fill="#1a2332" stroke="#f87171" stroke-width="5"/>
+  <text x="480.0" y="356" text-anchor="middle" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="20" font-weight="700">Never paste keys in chat or Git</text>
+  <text x="480.0" y="382" text-anchor="middle" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="14">Use team-approved endpoints only</text>
 </svg>

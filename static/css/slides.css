@@ -8,17 +8,91 @@
     rgba(7, 10, 16, 0.99) 45%,
     rgba(6, 9, 15, 1) 100%
   );
-  --bg-card: rgba(20, 26, 40, 0.72);
+  --bg-card: rgba(22, 30, 48, 0.88);
   --accent: #3dff9c;
   --accent-dim: #1a8f5c;
-  --text: #f0f4fa;
+  --text: #f8fafc;
   --muted: #94a3b8;
-  --line: rgba(255, 255, 255, 0.06);
-  --line-strong: rgba(255, 255, 255, 0.1);
+  --text-body: #e8edf4;
+  /* 본문·보조: 배경과 분리되도록 명도↑ */
+  --text-read: #eef2f7;
+  --text-read-soft: #c8d4e4;
+  --line: rgba(255, 255, 255, 0.14);
+  --line-strong: rgba(255, 255, 255, 0.24);
   --glow: rgba(61, 255, 156, 0.22);
   /* 가로는 최소, 세로만 숨 쉴 틈 */
   --pad-x: clamp(0.5rem, 1.25vw, 1rem);
   --pad-y: clamp(0.75rem, 2vh, 1.35rem);
+
+  /* 배경 메시 · 페이지 그라데이션 (테마 전환) */
+  --bg-mesh-1: rgba(61, 255, 156, 0.1);
+  --bg-mesh-2: rgba(99, 102, 241, 0.12);
+  --bg-page-gradient: linear-gradient(180deg, #030508 0%, var(--bg-deep) 55%, #050810 100%);
+  --frame-vignette: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    transparent 18%,
+    transparent 82%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  --frame-shadow: 0 32px 100px rgba(0, 0, 0, 0.45);
+  --frame-inner-inset: rgba(255, 255, 255, 0.04);
+
+  /* 하단 슬라이드 번호 */
+  --nav-fg: rgba(241, 245, 249, 0.82);
+  --nav-bg: rgba(4, 6, 12, 0.65);
+
+  /* 상단 툴바 · 챕터 패널 */
+  --toolbar-bg: rgba(4, 8, 16, 0.88);
+  --toolbar-hint: var(--text-read-soft);
+  --toolbar-btn-bg: rgba(18, 24, 38, 0.9);
+  --toolbar-btn-fg: var(--text-read);
+  --sidebar-bg: rgba(6, 10, 18, 0.97);
+  --sidebar-shadow: 8px 0 32px rgba(0, 0, 0, 0.35);
+  --sidebar-link: var(--text-read);
+  --sidebar-link-hover-fg: #ffffff;
+  --sidebar-num: var(--text-read-soft);
+  --sidebar-tab-bg: rgba(10, 14, 22, 0.96);
+  --sidebar-tab-fg: var(--text-read);
+
+  /* 표지 */
+  --cover-title-grad: linear-gradient(125deg, #ffffff 0%, #e2e8f0 38%, rgba(61, 255, 156, 0.95) 100%);
+  --cover-sub: var(--text-read);
+  --cover-principle-lead: var(--text-read-soft);
+  --cover-principle-li: var(--text-read);
+  --cover-meta: var(--text-read-soft);
+
+  /* 목적 유형 스택 */
+  --tier-strong: #f1f5f9;
+  --tier-span: var(--text-read-soft);
+  --tier-chip-bg: rgba(0, 0, 0, 0.28);
+  --tier-card-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+  --tier-card-inset: rgba(255, 255, 255, 0.04);
+
+  /* PPT 본문 타이포 */
+  --ppt-title: #f8fafc;
+  --ppt-lead: var(--text-read);
+  --ppt-lead-sub: #e2e8f0;
+  --ppt-bullets: var(--text-read);
+
+  /* 실습 말풍선 */
+  --tb-stage-bg: #0b1220;
+  --tb-stage-border: rgba(100, 116, 139, 0.65);
+  --tb-stage-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+  --tb-callout-bg: rgba(15, 23, 42, 0.94);
+  --tb-callout-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+  --tb-text: var(--text-read);
+  --tb-caption: var(--text-read-soft);
+  --tb-foot: var(--text-read-soft);
+
+  /* 무료 API 표 */
+  --free-api-th-bg: rgba(20, 26, 40, 0.85);
+  --free-api-th-fg: var(--text-read);
+  --free-api-strong: #f1f5f9;
+
+  /* 일반 슬라이드 헤더 */
+  --slide-header-h1: #f8fafc;
+  --slide-header-p: var(--text-read-soft);
 }
 
 * {
@@ -38,7 +112,7 @@ body {
   color: var(--text);
   font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   font-size: clamp(1rem, 1.35vw, 1.125rem);
-  line-height: 1.55;
+  line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -61,9 +135,9 @@ body {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse 90% 55% at 15% -5%, rgba(61, 255, 156, 0.1), transparent 52%),
-    radial-gradient(ellipse 70% 45% at 100% 105%, rgba(99, 102, 241, 0.12), transparent 48%),
-    linear-gradient(180deg, #030508 0%, var(--bg-deep) 55%, #050810 100%);
+    radial-gradient(ellipse 90% 55% at 15% -5%, var(--bg-mesh-1), transparent 52%),
+    radial-gradient(ellipse 70% 45% at 100% 105%, var(--bg-mesh-2), transparent 48%),
+    var(--bg-page-gradient);
   pointer-events: none;
   z-index: 0;
 }
@@ -77,11 +151,13 @@ body {
   max-height: min(92vh, calc(100vw * 9 / 16));
   border: none;
   border-top: 1px solid var(--line-strong);
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--line-strong);
+  border-left: 1px solid var(--line);
+  border-right: 1px solid var(--line);
   border-radius: 0;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    0 32px 100px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 var(--frame-inner-inset),
+    var(--frame-shadow),
     0 0 80px var(--glow);
   overflow: hidden;
   background: var(--bg-frame);
@@ -92,13 +168,7 @@ body {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.03) 0%,
-    transparent 18%,
-    transparent 82%,
-    rgba(0, 0, 0, 0.2) 100%
-  );
+  background: var(--frame-vignette);
 }
 
 .slide-inner {
@@ -125,15 +195,15 @@ body {
 }
 
 .slide-nav a {
-  color: rgba(240, 244, 250, 0.65);
+  color: var(--nav-fg);
   text-decoration: none;
   padding: 0.3rem 0.5rem;
   min-width: 1.75rem;
   text-align: center;
   font-variant-numeric: tabular-nums;
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong);
   border-radius: 3px;
-  background: rgba(4, 6, 12, 0.65);
+  background: var(--nav-bg);
   backdrop-filter: blur(8px);
   transition:
     color 0.2s,
@@ -172,7 +242,7 @@ body {
   line-height: 1.04;
   margin: 0 0 1rem;
   letter-spacing: -0.045em;
-  background: linear-gradient(125deg, #ffffff 0%, #e2e8f0 38%, rgba(61, 255, 156, 0.95) 100%);
+  background: var(--cover-title-grad);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -181,7 +251,7 @@ body {
 .cover-sub {
   font-size: clamp(0.95rem, 1.85vw, 1.2rem);
   font-weight: 450;
-  color: rgba(148, 163, 184, 0.95);
+  color: var(--cover-sub);
   max-width: min(58ch, 100%);
   line-height: 1.62;
   margin: 0 0 0.65rem;
@@ -209,7 +279,7 @@ body {
   font-size: clamp(0.78rem, 1.25vw, 0.88rem);
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: rgba(226, 232, 240, 0.92);
+  color: var(--cover-principle-lead);
   line-height: 1.45;
 }
 
@@ -219,7 +289,7 @@ body {
   font-size: clamp(0.78rem, 1.2vw, 0.92rem);
   font-weight: 450;
   line-height: 1.58;
-  color: rgba(148, 163, 184, 0.96);
+  color: var(--cover-principle-li);
 }
 
 .cover-principle-list li {
@@ -249,14 +319,14 @@ body {
   gap: 1rem;
   flex-wrap: wrap;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--line-strong);
   margin-top: auto;
 }
 
 .cover-meta {
   font-size: clamp(0.78rem, 1.1vw, 0.88rem);
   font-weight: 450;
-  color: rgba(148, 163, 184, 0.88);
+  color: var(--cover-meta);
   letter-spacing: 0.01em;
 }
 
@@ -320,7 +390,7 @@ body {
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.18;
-  color: #f8fafc;
+  color: var(--slide-header-h1);
   text-wrap: balance;
 }
 
@@ -329,7 +399,7 @@ body {
   font-size: clamp(0.95rem, 1.65vw, 1.1rem);
   font-weight: 450;
   line-height: 1.5;
-  color: rgba(148, 163, 184, 0.92);
+  color: var(--slide-header-p);
   max-width: min(72ch, 100%);
 }
 
@@ -354,14 +424,16 @@ body {
 
 .cat-block {
   background: var(--bg-card);
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong);
   border-radius: 6px;
   padding: 0.7rem 0.75rem;
   display: flex;
   flex-direction: column;
   gap: 0.55rem;
   backdrop-filter: blur(12px);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 4px 20px rgba(0, 0, 0, 0.22);
 }
 
 .cat-block h2 {
@@ -443,14 +515,14 @@ body {
   font-weight: 700;
   margin-bottom: 0.2rem;
   letter-spacing: -0.02em;
-  color: #f1f5f9;
+  color: var(--ppt-title);
 }
 
 .tool-body span {
   font-size: clamp(0.88rem, 1.35vw, 1rem);
   font-weight: 450;
-  color: rgba(148, 163, 184, 0.95);
-  line-height: 1.45;
+  color: var(--text-read-soft);
+  line-height: 1.55;
 }
 
 /* Slide 3 — diagram */
@@ -481,10 +553,10 @@ body {
   gap: 0.65rem 1.1rem;
   font-size: clamp(0.68rem, 1vw, 0.76rem);
   font-weight: 450;
-  color: rgba(148, 163, 184, 0.9);
+  color: var(--text-read-soft);
   justify-content: center;
   padding-top: 0.45rem;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--line-strong);
 }
 
 .diagram-legend span::before {
@@ -512,7 +584,7 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 0.5rem 0.65rem;
   flex-shrink: 0;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--line-strong);
   padding-top: 0.55rem;
 }
 
@@ -523,10 +595,11 @@ body {
 }
 
 .diagram-context-card {
-  background: rgba(20, 26, 40, 0.55);
-  border: 1px solid var(--line);
+  background: rgba(18, 24, 38, 0.92);
+  border: 1px solid var(--line-strong);
   border-radius: 6px;
   padding: 0.45rem 0.55rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .diagram-context-h {
@@ -541,8 +614,8 @@ body {
   margin: 0;
   font-size: clamp(0.68rem, 1.05vw, 0.8rem);
   font-weight: 450;
-  line-height: 1.48;
-  color: rgba(148, 163, 184, 0.98);
+  line-height: 1.55;
+  color: var(--text-read);
 }
 
 /* Slide 4 — 그 밖 목적 축(보조) */
@@ -550,17 +623,17 @@ body {
   margin: 0.35rem 0 0;
   font-size: clamp(0.78rem, 1.2vw, 0.9rem);
   font-weight: 450;
-  line-height: 1.48;
-  color: rgba(148, 163, 184, 0.95);
+  line-height: 1.55;
+  color: var(--text-read);
   max-width: min(82ch, 100%);
   padding: 0.4rem 0.5rem;
   border-radius: 6px;
-  border: 1px dashed rgba(99, 102, 241, 0.35);
-  background: rgba(99, 102, 241, 0.06);
+  border: 1px dashed rgba(129, 140, 248, 0.55);
+  background: rgba(99, 102, 241, 0.1);
 }
 
 .slide-04-extra-types strong {
-  color: rgba(199, 210, 254, 0.95);
+  color: var(--ppt-title);
 }
 
 /* Slide 4 — 실행 원칙 한 줄 */
@@ -568,13 +641,13 @@ body {
   margin: 0.35rem 0 0;
   font-size: clamp(0.88rem, 1.45vw, 1rem);
   font-weight: 450;
-  line-height: 1.5;
-  color: rgba(148, 163, 184, 0.96);
+  line-height: 1.58;
+  color: var(--text-read);
   max-width: min(78ch, 100%);
 }
 
 .slide-04-principle strong {
-  color: rgba(226, 232, 240, 0.92);
+  color: var(--ppt-title);
 }
 
 /* Tool detail pages — 스크롤 가능한 긴 본문 */
@@ -645,8 +718,8 @@ body {
   margin: 0;
   font-size: clamp(0.88rem, 1.35vw, 0.98rem);
   font-weight: 450;
-  color: rgba(148, 163, 184, 0.95);
-  line-height: 1.55;
+  color: var(--text-read-soft);
+  line-height: 1.58;
 }
 
 .detail-body {
@@ -658,7 +731,7 @@ body {
   font-size: clamp(0.84rem, 1.2vw, 0.95rem);
   font-weight: 450;
   line-height: 1.68;
-  color: rgba(240, 244, 250, 0.94);
+  color: var(--text-read);
 }
 
 .detail-para:last-child {
@@ -764,12 +837,12 @@ body {
   gap: 0.55rem;
   padding: 0.45rem 0.55rem;
   border-radius: 4px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong);
   background: var(--bg-card);
   backdrop-filter: blur(10px);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    0 6px 24px rgba(0, 0, 0, 0.25);
+    inset 0 1px 0 var(--tier-card-inset),
+    var(--tier-card-shadow);
 }
 
 .vibe-tier-num {
@@ -788,13 +861,13 @@ body {
   font-weight: 700;
   margin-bottom: 0.12rem;
   line-height: 1.28;
-  color: #f1f5f9;
+  color: var(--tier-strong);
 }
 
 .vibe-tier-text span {
   font-size: clamp(0.62rem, 1vw, 0.7rem);
   font-weight: 450;
-  color: rgba(148, 163, 184, 0.95);
+  color: var(--tier-span);
   line-height: 1.42;
   display: block;
 }
@@ -819,7 +892,7 @@ body {
   padding: 0.18rem 0.42rem;
   border-radius: 3px;
   border: 1px solid var(--line);
-  background: rgba(0, 0, 0, 0.28);
+  background: var(--tier-chip-bg);
   color: rgba(61, 255, 156, 0.92);
   text-decoration: none;
   font-weight: 600;
@@ -867,7 +940,7 @@ body {
 
 .vibe-detail-card {
   background: var(--bg-card);
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong);
   border-radius: 6px;
   padding: 0.55rem 0.65rem;
   display: flex;
@@ -893,7 +966,7 @@ body {
   font-size: clamp(0.64rem, 1vw, 0.72rem);
   font-weight: 450;
   line-height: 1.52;
-  color: rgba(226, 232, 240, 0.92);
+  color: var(--text-read-soft);
 }
 
 .vibe-detail-sub {
@@ -901,7 +974,7 @@ body {
   font-size: clamp(0.58rem, 0.85vw, 0.64rem);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: rgba(148, 163, 184, 0.85);
+  color: var(--text-read-soft);
   font-weight: 700;
 }
 
@@ -911,7 +984,7 @@ body {
   font-size: clamp(0.62rem, 0.95vw, 0.7rem);
   font-weight: 450;
   line-height: 1.5;
-  color: rgba(148, 163, 184, 0.95);
+  color: var(--text-read);
 }
 
 .vibe-detail-list li {
@@ -949,7 +1022,7 @@ body {
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.3;
-  color: #f1f5f9;
+  color: var(--ppt-title);
 }
 
 .vibe-knowhow-para {
@@ -957,7 +1030,7 @@ body {
   font-size: clamp(0.65rem, 1.05vw, 0.74rem);
   font-weight: 450;
   line-height: 1.58;
-  color: rgba(148, 163, 184, 0.95);
+  color: var(--text-read);
 }
 
 .vibe-knowhow-para:last-child {
@@ -991,7 +1064,7 @@ body {
   font-weight: 800;
   letter-spacing: -0.025em;
   line-height: 1.3;
-  color: #f1f5f9;
+  color: var(--ppt-title);
 }
 
 .wlb-para {
@@ -999,7 +1072,7 @@ body {
   font-size: clamp(0.65rem, 1.05vw, 0.74rem);
   font-weight: 450;
   line-height: 1.58;
-  color: rgba(148, 163, 184, 0.95);
+  color: var(--text-read);
 }
 
 .wlb-para:last-child {
@@ -1040,7 +1113,7 @@ body {
   font-size: clamp(0.64rem, 1vw, 0.72rem);
   font-weight: 450;
   line-height: 1.55;
-  color: rgba(148, 163, 184, 0.95);
+  color: var(--text-read);
 }
 
 .inspiration-list li {
@@ -1087,7 +1160,7 @@ body {
 
 .ppt-slide-header {
   flex-shrink: 0;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--line-strong);
   padding-bottom: 0.65rem;
   margin-bottom: 0.25rem;
 }
@@ -1107,22 +1180,22 @@ body {
   font-weight: 800;
   letter-spacing: -0.035em;
   line-height: 1.15;
-  color: #f8fafc;
+  color: var(--ppt-title);
 }
 
 .ppt-lead {
   margin: 0;
   font-size: clamp(1.05rem, 2vw, 1.25rem);
   font-weight: 450;
-  line-height: 1.5;
-  color: rgba(226, 232, 240, 0.92);
+  line-height: 1.58;
+  color: var(--ppt-lead);
 }
 
 .ppt-lead-sub {
   margin: 0.35rem 0 0;
   font-size: clamp(0.95rem, 1.6vw, 1.08rem);
-  color: rgba(148, 163, 184, 0.95);
-  line-height: 1.45;
+  color: var(--ppt-lead-sub);
+  line-height: 1.55;
 }
 
 .ppt-sub {
@@ -1137,12 +1210,12 @@ body {
   padding-left: 1.35rem;
   font-size: clamp(1rem, 1.75vw, 1.18rem);
   font-weight: 450;
-  line-height: 1.48;
-  color: rgba(148, 163, 184, 0.98);
+  line-height: 1.58;
+  color: var(--ppt-bullets);
 }
 
 .ppt-bullets li {
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.52rem;
 }
 
 .ppt-bullets li::marker {
@@ -1201,7 +1274,7 @@ body {
   margin: 0 0 0.45rem;
   font-size: clamp(1.05rem, 1.9vw, 1.2rem);
   font-weight: 800;
-  color: #f1f5f9;
+  color: var(--ppt-title);
   line-height: 1.25;
 }
 
@@ -1209,7 +1282,7 @@ body {
   margin: 0 0 0.4rem;
   font-size: clamp(0.95rem, 1.55vw, 1.08rem);
   line-height: 1.5;
-  color: rgba(148, 163, 184, 0.96);
+  color: var(--text-read);
 }
 
 /* 워크플로 */
@@ -1224,7 +1297,7 @@ body {
 
 .ppt-wf-block {
   padding-bottom: 0.65rem;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--line-strong);
 }
 
 .ppt-wf-block:last-child {
@@ -1236,14 +1309,14 @@ body {
   margin: 0 0 0.4rem;
   font-size: clamp(1.05rem, 1.9vw, 1.22rem);
   font-weight: 800;
-  color: #e0e7ff;
+  color: #eef2ff;
 }
 
 .ppt-wf-p {
   margin: 0 0 0.35rem;
   font-size: clamp(0.95rem, 1.55vw, 1.08rem);
   line-height: 1.52;
-  color: rgba(148, 163, 184, 0.96);
+  color: var(--text-read);
 }
 
 /* 영감 */
@@ -1258,7 +1331,7 @@ body {
 
 .ppt-insp-sec {
   padding-top: 0.35rem;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--line-strong);
 }
 
 .ppt-insp-sec:first-of-type {
@@ -1332,12 +1405,15 @@ body {
   right: max(0.35rem, env(safe-area-inset-right, 0px));
   z-index: 90;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: flex-end;
   gap: 0.45rem;
+  max-width: calc(100vw - 0.75rem);
   padding: 0.35rem 0.5rem;
   border-radius: 6px;
   border: 1px solid var(--line);
-  background: rgba(4, 8, 16, 0.88);
+  background: var(--toolbar-bg);
   backdrop-filter: blur(10px);
 }
 
@@ -1346,7 +1422,16 @@ body {
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(148, 163, 184, 0.85);
+  color: var(--toolbar-hint);
+}
+
+.deck-toolbar-divider {
+  width: 1px;
+  height: 1.1rem;
+  background: var(--line-strong);
+  margin: 0 0.1rem;
+  flex-shrink: 0;
+  opacity: 0.9;
 }
 
 .deck-mode-switch {
@@ -1362,8 +1447,8 @@ body {
   padding: 0.35rem 0.55rem;
   border-radius: 4px;
   border: 1px solid var(--line);
-  background: rgba(18, 24, 38, 0.9);
-  color: rgba(226, 232, 240, 0.85);
+  background: var(--toolbar-btn-bg);
+  color: var(--toolbar-btn-fg);
   cursor: pointer;
   transition:
     background 0.15s,
@@ -1380,6 +1465,270 @@ body {
   background: rgba(61, 255, 156, 0.12);
   border-color: rgba(61, 255, 156, 0.45);
   color: var(--accent);
+}
+
+.deck-theme-switch {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.deck-theme-btn {
+  font-family: inherit;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.35rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  background: var(--toolbar-btn-bg);
+  color: var(--toolbar-btn-fg);
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    color 0.15s;
+}
+
+.deck-theme-btn:hover {
+  border-color: rgba(61, 255, 156, 0.35);
+  color: var(--accent);
+}
+
+.deck-theme-btn[aria-pressed="true"] {
+  background: rgba(61, 255, 156, 0.12);
+  border-color: rgba(61, 255, 156, 0.45);
+  color: var(--accent);
+}
+
+.deck-toolbar-export {
+  font-family: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 0.35rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  background: var(--toolbar-btn-bg);
+  color: var(--toolbar-btn-fg);
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    color 0.15s;
+}
+
+.deck-toolbar-export:hover {
+  border-color: rgba(99, 102, 241, 0.45);
+  color: rgba(129, 140, 248, 0.98);
+}
+
+/* Playwright 캡처 전용: 툴바·챕터·하단 번호 숨김 */
+body.export-capture .deck-chapter,
+body.export-capture .deck-toolbar,
+body.export-capture .slide-nav {
+  display: none !important;
+}
+
+body.export-capture .app-shell:has(.deck-chapter) .deck-workspace,
+body.export-capture .deck-workspace {
+  padding-left: 0 !important;
+}
+
+body.export-capture .slide-root {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* 내보내기 다이얼로그 */
+.export-dialog {
+  max-width: min(520px, 96vw);
+  width: 100%;
+  padding: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  background: var(--bg-card);
+  color: var(--text-body);
+  box-shadow: var(--frame-shadow);
+}
+
+.export-dialog::backdrop {
+  background: rgba(2, 6, 15, 0.55);
+}
+
+.export-dialog-inner {
+  padding: 1rem 1.1rem 1.1rem;
+  max-height: min(85vh, 720px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.export-dialog-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--ppt-title);
+}
+
+.export-dialog-lead {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.export-dialog-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.85rem;
+  font-size: 0.78rem;
+}
+
+.export-dialog-label {
+  font-weight: 800;
+  color: var(--text-body);
+  min-width: 4.5rem;
+}
+
+.export-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  cursor: pointer;
+  color: var(--text-body);
+}
+
+.export-dialog-actions {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.export-slide-list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  padding: 0.35rem 0.4rem;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: rgba(15, 23, 42, 0.25);
+}
+
+html[data-theme="light"] .export-slide-list {
+  background: rgba(241, 245, 249, 0.95);
+}
+
+.export-group {
+  margin-bottom: 0.65rem;
+}
+
+.export-group:last-child {
+  margin-bottom: 0;
+}
+
+.export-group-head {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 800;
+  font-size: 0.78rem;
+  cursor: pointer;
+  color: var(--text-body);
+  margin-bottom: 0.25rem;
+}
+
+.export-group-range {
+  margin-left: auto;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.export-group-slides {
+  margin: 0;
+  padding: 0 0 0 1.1rem;
+  list-style: none;
+}
+
+.export-slide-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  cursor: pointer;
+  padding: 0.12rem 0;
+  color: var(--text-body);
+}
+
+.export-slide-num {
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+  width: 1.5rem;
+  flex-shrink: 0;
+}
+
+.export-slide-title {
+  flex: 1;
+  min-width: 0;
+}
+
+.export-dialog-hint {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--accent);
+  min-height: 1.2em;
+}
+
+.export-dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+  padding-top: 0.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.export-btn {
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  background: var(--toolbar-btn-bg);
+  color: var(--toolbar-btn-fg);
+}
+
+.export-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.export-btn--ghost:hover {
+  border-color: rgba(61, 255, 156, 0.35);
+  color: var(--accent);
+}
+
+.export-btn--primary {
+  background: rgba(61, 255, 156, 0.14);
+  border-color: rgba(61, 255, 156, 0.45);
+  color: var(--accent);
+}
+
+.export-btn--primary:hover:not(:disabled) {
+  background: rgba(61, 255, 156, 0.22);
+}
+
+html[data-theme="light"] .export-btn--primary {
+  background: rgba(5, 120, 90, 0.12);
+  border-color: rgba(5, 120, 90, 0.4);
+  color: #047857;
 }
 
 /* 좌측 챕터 패널 */
@@ -1409,9 +1758,9 @@ body {
   overflow-y: auto;
   scrollbar-width: thin;
   padding: 0.75rem 0.65rem 1rem 0.85rem;
-  background: rgba(6, 10, 18, 0.97);
+  background: var(--sidebar-bg);
   border-right: 1px solid var(--line-strong);
-  box-shadow: 8px 0 32px rgba(0, 0, 0, 0.35);
+  box-shadow: var(--sidebar-shadow);
 }
 
 .deck-chapter-kicker {
@@ -1421,6 +1770,91 @@ body {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(61, 255, 156, 0.75);
+}
+
+.deck-chapter-tree {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.deck-chapter-group {
+  margin: 0 0 0.2rem;
+}
+
+.deck-chapter-group:first-child {
+  margin-top: 0;
+}
+
+.deck-chapter-group-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.38rem 0.35rem 0.38rem 0.25rem;
+  margin: 0 0 0.12rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: rgba(15, 23, 42, 0.72);
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  color: var(--sidebar-link);
+  transition:
+    background 0.12s,
+    border-color 0.12s;
+}
+
+.deck-chapter-group-toggle:hover {
+  background: rgba(61, 255, 156, 0.12);
+  border-color: rgba(61, 255, 156, 0.35);
+  color: var(--sidebar-link-hover-fg);
+}
+
+.deck-chapter-chevron {
+  display: inline-block;
+  width: 0.4rem;
+  height: 0.4rem;
+  flex-shrink: 0;
+  margin-left: 0.05rem;
+  border: solid currentColor;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  opacity: 0.85;
+  transition: transform 0.2s ease;
+}
+
+.deck-chapter-group.is-collapsed .deck-chapter-chevron {
+  transform: rotate(-45deg);
+}
+
+.deck-chapter-group-label {
+  flex: 1;
+  min-width: 0;
+  font-size: clamp(0.7rem, 1vw, 0.78rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.deck-chapter-group-range {
+  flex-shrink: 0;
+  font-size: 0.58rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--sidebar-num);
+  opacity: 0.9;
+}
+
+.deck-chapter-list--nested {
+  margin: 0 0 0.15rem;
+  padding: 0 0 0 0.45rem;
+  list-style: none;
+  border-left: 1px solid rgba(129, 140, 248, 0.22);
+}
+
+.deck-chapter-group.is-collapsed .deck-chapter-list--nested {
+  display: none;
 }
 
 .deck-chapter-list {
@@ -1443,7 +1877,7 @@ body {
   font-size: clamp(0.72rem, 1.1vw, 0.82rem);
   font-weight: 500;
   line-height: 1.35;
-  color: rgba(203, 213, 225, 0.92);
+  color: var(--sidebar-link);
   transition:
     background 0.12s,
     color 0.12s;
@@ -1451,7 +1885,7 @@ body {
 
 .deck-chapter-link:hover {
   background: rgba(61, 255, 156, 0.06);
-  color: #f8fafc;
+  color: var(--sidebar-link-hover-fg);
 }
 
 .deck-chapter-link.is-active {
@@ -1464,7 +1898,7 @@ body {
   font-variant-numeric: tabular-nums;
   font-weight: 800;
   font-size: 0.68rem;
-  color: rgba(148, 163, 184, 0.95);
+  color: var(--sidebar-num);
   flex-shrink: 0;
   width: 1.25rem;
 }
@@ -1487,8 +1921,8 @@ body {
   padding: 0.25rem;
   border: none;
   border-right: 1px solid var(--line-strong);
-  background: rgba(10, 14, 22, 0.96);
-  color: rgba(203, 213, 225, 0.9);
+  background: var(--sidebar-tab-bg);
+  color: var(--sidebar-tab-fg);
   cursor: pointer;
   writing-mode: vertical-rl;
   text-orientation: mixed;
@@ -1565,7 +1999,7 @@ body.mode-browse .slide-nav {
   gap: 0.18rem;
 }
 
-/* 기술 보충 슬라이드 (16~19) */
+/* 기술 보충 슬라이드 */
 .slide-tech .slide-inner {
   overflow-y: auto;
   scrollbar-width: thin;
@@ -1588,28 +2022,30 @@ body.mode-browse .slide-nav {
 .ppt-usage-plain {
   margin: 0.4rem 0 0;
   font-size: clamp(0.85rem, 1.45vw, 0.98rem);
-  line-height: 1.52;
-  color: rgba(203, 213, 225, 0.96);
+  line-height: 1.58;
+  color: var(--text-read);
   padding: 0.45rem 0.55rem;
   border-radius: 6px;
-  border-left: 3px solid rgba(61, 255, 156, 0.45);
-  background: rgba(61, 255, 156, 0.06);
+  border: 1px solid var(--line);
+  border-left: 3px solid rgba(61, 255, 156, 0.55);
+  background: rgba(61, 255, 156, 0.08);
 }
 
 .ppt-usage-plain {
-  border-left-color: rgba(129, 140, 248, 0.55);
-  background: rgba(99, 102, 241, 0.08);
+  border-left-color: rgba(129, 140, 248, 0.65);
+  border-color: var(--line);
+  background: rgba(99, 102, 241, 0.1);
 }
 
 .ppt-metaphor strong,
 .ppt-usage-plain strong {
-  color: rgba(226, 232, 240, 0.98);
+  color: var(--text-read);
   font-weight: 800;
 }
 
 .ppt-tech-sec {
   padding-bottom: 0.45rem;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--line-strong);
 }
 
 .ppt-tech-sec:last-of-type {
@@ -1627,7 +2063,7 @@ body.mode-browse .slide-nav {
   margin: 0 0 0.35rem;
   font-size: clamp(0.85rem, 1.4vw, 0.98rem);
   line-height: 1.52;
-  color: rgba(148, 163, 184, 0.97);
+  color: var(--text-read);
 }
 
 .ppt-tech-links {
@@ -1644,7 +2080,7 @@ body.mode-browse .slide-tech .ppt-tech-body {
   overflow: visible;
 }
 
-/* 공통 기능 비교 슬라이드 (26~33) */
+/* 공통 기능 비교 슬라이드 (13~20) */
 .slide-feature-plain .slide-inner {
   overflow-y: auto;
   scrollbar-width: thin;
@@ -1680,15 +2116,16 @@ body.mode-browse .slide-tech .ppt-tech-body {
   gap: 0.45rem;
   margin-top: 0.15rem;
   padding-top: 0.35rem;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--line-strong);
 }
 
 .ppt-compare-card {
   margin: 0;
   padding: 0.4rem 0.5rem;
   border-radius: 8px;
-  border: 1px solid var(--line);
-  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid var(--line-strong);
+  background: rgba(15, 23, 42, 0.78);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .ppt-compare-label {
@@ -1702,15 +2139,15 @@ body.mode-browse .slide-tech .ppt-tech-body {
 .ppt-compare-bite {
   margin: 0;
   font-size: clamp(0.72rem, 1.1vw, 0.84rem);
-  line-height: 1.45;
-  color: rgba(148, 163, 184, 0.98);
+  line-height: 1.52;
+  color: var(--text-read);
 }
 
 body.mode-browse .slide-feature-plain .slide-inner {
   overflow: visible;
 }
 
-/* 무료 API 목록 슬라이드 (20) */
+/* 무료 API 목록 슬라이드 (10) */
 .slide-free-apis .slide-inner {
   overflow: hidden;
   display: flex;
@@ -1738,7 +2175,7 @@ body.mode-browse .slide-feature-plain .slide-inner {
   padding-left: 1.2rem;
   font-size: clamp(0.72rem, 1.15vw, 0.84rem);
   line-height: 1.45;
-  color: rgba(148, 163, 184, 0.95);
+  color: var(--text-read);
   flex-shrink: 0;
 }
 
@@ -1783,7 +2220,7 @@ body.mode-browse .slide-feature-plain .slide-inner {
   margin: 0 0 0.45rem;
   font-size: clamp(0.72rem, 1.15vw, 0.82rem);
   line-height: 1.45;
-  color: rgba(148, 163, 184, 0.92);
+  color: var(--text-read-soft);
 }
 
 .free-api-table {
@@ -1801,13 +2238,13 @@ body.mode-browse .slide-feature-plain .slide-inner {
 }
 
 .free-api-table th {
-  background: rgba(20, 26, 40, 0.85);
-  color: rgba(226, 232, 240, 0.9);
+  background: var(--free-api-th-bg);
+  color: var(--free-api-th-fg);
   font-weight: 700;
 }
 
 .free-api-table strong {
-  color: #f1f5f9;
+  color: var(--free-api-strong);
   font-weight: 700;
 }
 
@@ -1858,7 +2295,17 @@ body.mode-browse .free-api-scroll {
   overflow: visible;
 }
 
-/* 실습 캡처 + 말풍선 (44~55) */
+/* 실습 캡처 + 다이어그램 아래 메모 — Cline·교육 (26~35, 36~39) */
+
+.tutorial-bubble-img--ref {
+  object-fit: contain;
+  padding: 0.5rem;
+  background: rgba(15, 23, 42, 0.35);
+}
+
+html[data-theme="light"] .tutorial-bubble-img--ref {
+  background: rgba(241, 245, 249, 0.9);
+}
 .slide-tutorial-bubbles .slide-inner {
   overflow-y: auto;
   scrollbar-width: thin;
@@ -1869,7 +2316,7 @@ body.mode-browse .free-api-scroll {
   flex-shrink: 0;
   padding-bottom: 0.45rem;
   margin-bottom: 0.15rem;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--line-strong);
 }
 
 .tutorial-bubble-title {
@@ -1886,6 +2333,14 @@ body.mode-browse .free-api-scroll {
 
 .tutorial-series--gemini {
   color: rgba(165, 180, 252, 0.98) !important;
+}
+
+.tutorial-series--flask {
+  color: rgba(52, 211, 153, 0.95) !important;
+}
+
+.tutorial-series--stack {
+  color: rgba(147, 197, 253, 0.96) !important;
 }
 
 .tutorial-bubble-stage {
@@ -1909,11 +2364,11 @@ body.mode-browse .free-api-scroll {
   aspect-ratio: 16 / 9;
   border-radius: 8px;
   overflow: hidden;
-  border: 1px solid rgba(51, 65, 85, 0.85);
-  background: #0b1220;
+  border: 2px solid var(--tb-stage-border);
+  background: var(--tb-stage-bg);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    0 8px 28px rgba(0, 0, 0, 0.35);
+    inset 0 1px 0 var(--frame-inner-inset),
+    var(--tb-stage-shadow);
 }
 
 .tutorial-bubble-img {
@@ -1924,28 +2379,43 @@ body.mode-browse .free-api-scroll {
   vertical-align: middle;
 }
 
-.tutorial-bubble-callout {
-  position: absolute;
-  z-index: 2;
-  padding: 0.35rem 0.45rem 0.4rem;
-  border-radius: 10px;
-  background: rgba(15, 23, 42, 0.94);
-  border: 1px solid rgba(129, 140, 248, 0.45);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+/* 다이어그램 아래 메모 — 이미지 텍스트와 겹치지 않도록 오버레이 대신 배치 */
+.tutorial-bubble-notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.55rem;
+  margin-top: 0.4rem;
+  align-items: stretch;
 }
 
-.tutorial-bubble-callout--left {
+.tutorial-bubble-note {
+  flex: 1 1 calc(50% - 0.3rem);
+  min-width: min(100%, 12rem);
+  max-width: 100%;
+  padding: 0.4rem 0.5rem 0.45rem;
+  border-radius: 10px;
+  background: var(--tb-callout-bg);
+  border: 1px solid rgba(129, 140, 248, 0.58);
+  box-shadow: var(--tb-callout-shadow);
+}
+
+.tutorial-bubble-note--left {
   border-left: 3px solid rgba(61, 255, 156, 0.65);
 }
 
-.tutorial-bubble-callout--right {
+.tutorial-bubble-note--right {
   border-right: 3px solid rgba(129, 140, 248, 0.65);
 }
 
-.tutorial-bubble-callout-inner {
+.tutorial-bubble-note-inner {
   display: flex;
   align-items: flex-start;
   gap: 0.35rem;
+}
+
+.tutorial-bubble-note:only-child {
+  flex: 1 1 100%;
+  max-width: 100%;
 }
 
 .tutorial-bubble-num {
@@ -1968,32 +2438,343 @@ body.mode-browse .free-api-scroll {
   margin: 0;
   flex: 1;
   min-width: 0;
-  font-size: clamp(0.68rem, 1.05vw, 0.78rem);
-  line-height: 1.42;
-  color: rgba(226, 232, 240, 0.98);
+  font-size: clamp(0.72rem, 1.1vw, 0.82rem);
+  line-height: 1.52;
+  color: var(--tb-text);
   font-weight: 500;
 }
 
 .tutorial-bubble-caption {
   margin: 0;
-  font-size: clamp(0.72rem, 1.1vw, 0.82rem);
-  line-height: 1.45;
-  color: rgba(148, 163, 184, 0.96);
+  font-size: clamp(0.74rem, 1.12vw, 0.84rem);
+  line-height: 1.52;
+  color: var(--tb-caption);
   padding: 0 0.1rem;
 }
 
 .tutorial-bubble-foot {
   margin: 0.25rem 0 0;
   flex-shrink: 0;
-  font-size: clamp(0.65rem, 1vw, 0.74rem);
-  line-height: 1.45;
-  color: rgba(100, 116, 139, 0.95);
-  padding: 0.35rem 0.45rem;
+  font-size: clamp(0.68rem, 1.02vw, 0.76rem);
+  line-height: 1.55;
+  color: var(--tb-foot);
+  padding: 0.4rem 0.5rem;
   border-radius: 6px;
-  border: 1px dashed rgba(71, 85, 105, 0.6);
-  background: rgba(15, 23, 42, 0.45);
+  border: 1px dashed rgba(148, 163, 184, 0.65);
+  background: rgba(15, 23, 42, 0.62);
 }
 
 body.mode-browse .slide-tutorial-bubbles .slide-inner {
   overflow: visible;
+}
+
+/* ——— 라이트 테마 (html data-theme="light") ——— */
+html[data-theme="light"] {
+  color-scheme: light;
+  /* 라이트: 본문·보조 글 모두 어둡게(대비↑) — 다크 테마(:root)는 그대로 */
+  --bg-deep: #e8edf3;
+  --bg-frame: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(248, 250, 252, 1) 45%,
+    rgba(236, 241, 247, 1) 100%
+  );
+  --bg-card: rgba(255, 255, 255, 0.94);
+  --accent: #047857;
+  --accent-dim: #065f46;
+  --text: #0a0f1a;
+  --muted: #334155;
+  --text-body: #0f172a;
+  --line: rgba(15, 23, 42, 0.18);
+  --line-strong: rgba(15, 23, 42, 0.3);
+  --glow: rgba(5, 150, 105, 0.16);
+  --bg-mesh-1: rgba(5, 150, 105, 0.08);
+  --bg-mesh-2: rgba(99, 102, 241, 0.07);
+  --bg-page-gradient: linear-gradient(180deg, #ffffff 0%, #eef2f7 50%, #e2e8f0 100%);
+  --frame-vignette: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.88) 0%,
+    transparent 20%,
+    transparent 80%,
+    rgba(15, 23, 42, 0.08) 100%
+  );
+  --frame-shadow: 0 24px 56px rgba(15, 23, 42, 0.12);
+  --frame-inner-inset: rgba(255, 255, 255, 0.92);
+  --nav-fg: #0f172a;
+  --nav-bg: rgba(255, 255, 255, 0.96);
+  --toolbar-bg: rgba(255, 255, 255, 0.98);
+  --toolbar-hint: #334155;
+  --toolbar-btn-bg: rgba(241, 245, 249, 1);
+  --toolbar-btn-fg: #0f172a;
+  --sidebar-bg: rgba(255, 255, 255, 0.99);
+  --sidebar-shadow: 8px 0 28px rgba(15, 23, 42, 0.1);
+  --sidebar-link: #0f172a;
+  --sidebar-link-hover-fg: #020617;
+  --sidebar-num: #475569;
+  --sidebar-tab-bg: rgba(248, 250, 252, 1);
+  --sidebar-tab-fg: #0f172a;
+  --cover-title-grad: linear-gradient(125deg, #020617 0%, #1e293b 42%, rgba(5, 120, 90, 0.95) 100%);
+  --cover-sub: #0f172a;
+  --cover-principle-lead: #1e293b;
+  --cover-principle-li: #1e293b;
+  --cover-meta: #475569;
+  --tier-strong: #020617;
+  --tier-span: #1e293b;
+  --tier-chip-bg: rgba(15, 23, 42, 0.08);
+  --tier-card-shadow: 0 8px 28px rgba(15, 23, 42, 0.1);
+  --tier-card-inset: rgba(255, 255, 255, 0.95);
+  --text-read: #0f172a;
+  --text-read-soft: #334155;
+  --ppt-title: #020617;
+  --ppt-lead: var(--text-read);
+  --ppt-lead-sub: #1e293b;
+  --ppt-bullets: var(--text-read);
+  --tb-stage-bg: #f1f5f9;
+  --tb-stage-border: rgba(71, 85, 105, 0.55);
+  --tb-stage-shadow: 0 8px 28px rgba(15, 23, 42, 0.1);
+  --tb-callout-bg: #ffffff;
+  --tb-callout-shadow: 0 6px 20px rgba(15, 23, 42, 0.12);
+  --tb-text: #0f172a;
+  --tb-caption: #1e293b;
+  --tb-foot: #334155;
+  --free-api-th-bg: rgba(241, 245, 249, 1);
+  --free-api-th-fg: #0f172a;
+  --free-api-strong: #020617;
+  --slide-header-h1: #020617;
+  --slide-header-p: #334155;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+html[data-theme="light"] .tutorial-bubble-foot {
+  border-color: rgba(100, 116, 139, 0.45);
+  background: rgba(241, 245, 249, 0.98);
+  color: #334155;
+}
+
+html[data-theme="light"] .deck-chapter-group-toggle {
+  background: rgba(248, 250, 252, 1);
+  border-color: rgba(15, 23, 42, 0.1);
+  color: #0f172a;
+}
+
+html[data-theme="light"] .deck-chapter-group-toggle:hover {
+  background: rgba(236, 253, 245, 0.98);
+  border-color: rgba(5, 120, 90, 0.22);
+  color: #020617;
+}
+
+html[data-theme="light"] .deck-chapter-group-range {
+  color: #475569;
+}
+
+html[data-theme="light"] .deck-chapter-list--nested {
+  border-left-color: rgba(71, 85, 105, 0.35);
+}
+
+html[data-theme="light"] .ppt-metaphor,
+html[data-theme="light"] .ppt-usage-plain {
+  color: #1e293b;
+  border-color: rgba(15, 23, 42, 0.16);
+  border-left-color: rgba(5, 120, 90, 0.58);
+  background: rgba(5, 120, 90, 0.07);
+}
+
+html[data-theme="light"] .ppt-usage-plain {
+  border-left-color: rgba(67, 56, 202, 0.55);
+  background: rgba(99, 102, 241, 0.08);
+}
+
+html[data-theme="light"] .ppt-metaphor strong,
+html[data-theme="light"] .ppt-usage-plain strong {
+  color: #020617;
+}
+
+html[data-theme="light"] .ppt-tech-p {
+  color: #334155;
+}
+
+html[data-theme="light"] .ppt-tech-h {
+  color: #4338ca;
+}
+
+html[data-theme="light"] .ppt-compare-section-title {
+  color: #047857;
+}
+
+html[data-theme="light"] .ppt-compare-card {
+  background: rgba(248, 250, 252, 0.98);
+  border-color: var(--line-strong);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+html[data-theme="light"] .ppt-compare-label {
+  color: #4338ca;
+}
+
+html[data-theme="light"] .ppt-compare-bite {
+  color: #1e293b;
+}
+
+html[data-theme="light"] .ppt-kicker {
+  color: #047857;
+}
+
+html[data-theme="light"] .ppt-bullets li::marker {
+  color: #047857;
+}
+
+html[data-theme="light"] .ppt-link-chip {
+  border-color: rgba(4, 120, 90, 0.45);
+  background: rgba(5, 120, 90, 0.08);
+  color: #065f46;
+}
+
+html[data-theme="light"] .ppt-link-chip:hover {
+  background: rgba(5, 120, 90, 0.14);
+}
+
+html[data-theme="light"] .ppt-knowhow-block {
+  border-left-color: rgba(4, 120, 90, 0.5);
+}
+
+html[data-theme="light"] .ppt-knowhow-h {
+  color: #020617;
+}
+
+html[data-theme="light"] .ppt-knowhow-line {
+  color: #1e293b;
+}
+
+html[data-theme="light"] .ppt-wf-h {
+  color: #1e3a8a;
+}
+
+html[data-theme="light"] .ppt-wf-p {
+  color: #334155;
+}
+
+html[data-theme="light"] .ppt-insp-h {
+  color: #047857;
+}
+
+html[data-theme="light"] .slide-04-extra-types {
+  color: #1e293b;
+  border-color: rgba(67, 56, 202, 0.45);
+  background: rgba(99, 102, 241, 0.07);
+}
+
+html[data-theme="light"] .slide-04-extra-types strong {
+  color: #020617;
+}
+
+html[data-theme="light"] .slide-04-principle {
+  color: #1e293b;
+}
+
+html[data-theme="light"] .slide-04-principle strong {
+  color: #020617;
+}
+
+html[data-theme="light"] .cover-principles {
+  border-color: rgba(4, 120, 90, 0.45);
+  background: rgba(5, 120, 90, 0.06);
+}
+
+html[data-theme="light"] .cover-principle-list li::marker {
+  color: #047857;
+}
+
+html[data-theme="light"] .cover-principle-tag {
+  color: #065f46;
+}
+
+html[data-theme="light"] .diagram-context-card {
+  border-color: var(--line-strong);
+  background: #f8fafc;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+html[data-theme="light"] .diagram-context-card p {
+  color: #334155;
+}
+
+html[data-theme="light"] .free-api-enterprise-note {
+  color: #334155;
+}
+
+html[data-theme="light"] .detail-title {
+  color: #020617;
+}
+
+html[data-theme="light"] .detail-tagline {
+  color: #334155;
+}
+
+html[data-theme="light"] .detail-para {
+  color: #1e293b;
+}
+
+html[data-theme="light"] .slide-nav a:hover {
+  color: #047857;
+  border-color: rgba(4, 120, 90, 0.4);
+  background: rgba(5, 120, 90, 0.08);
+}
+
+html[data-theme="light"] .detail-hero-icon img {
+  filter: none;
+  opacity: 1;
+}
+
+/* 라이트: 도구 목록·카드·슬라이드 프레임 대비 (회색 덩어리 방지) */
+html[data-theme="light"] .tool-body strong {
+  color: #020617;
+}
+
+html[data-theme="light"] .tool-body span {
+  color: #334155;
+}
+
+html[data-theme="light"] .tool-row img {
+  filter: none;
+  opacity: 1;
+}
+
+html[data-theme="light"] .cat-block {
+  border-color: var(--line-strong);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.98),
+    0 4px 18px rgba(15, 23, 42, 0.08);
+}
+
+html[data-theme="light"] .tutorial-bubble-note {
+  border-color: rgba(79, 70, 229, 0.38);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.1);
+}
+
+html[data-theme="light"] .vibe-tier-inner {
+  border-color: var(--line-strong);
+}
+
+html[data-theme="light"] .vibe-detail-card {
+  border-color: var(--line-strong);
+}
+
+html[data-theme="light"] .free-api-table th,
+html[data-theme="light"] .free-api-table td {
+  border-color: var(--line-strong);
+}
+
+html[data-theme="light"] .diagram-context {
+  border-top-color: var(--line-strong);
+}
+
+html[data-theme="light"] .diagram-legend {
+  border-top-color: var(--line-strong);
+}
+
+html[data-theme="light"] .inspiration-link-group {
+  border-top-color: var(--line-strong);
 }

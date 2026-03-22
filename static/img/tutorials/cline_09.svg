@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
+  <rect width="960" height="540" fill="#0a0f18"/>
+
+  <defs>
+    <marker id="arr" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#94a3b8"/>
+    </marker>
+    <marker id="arrG" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#22c55e"/>
+    </marker>
+  </defs>
+  <text x="48" y="44" fill="#f87171" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="22" font-weight="bold">9. Paste full error</text>
+  <rect x="48" y="70" width="400" height="200" rx="14" fill="#1e293b" stroke="#94a3b8" stroke-width="4"/>
+  <text x="248.0" y="106" text-anchor="middle" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="20" font-weight="700">Terminal</text>
+  <text x="248.0" y="132" text-anchor="middle" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="14">copy all</text>
+  <rect x="500" y="70" width="412" height="200" rx="14" fill="#111827" stroke="#22c55e" stroke-width="5"/>
+  <text x="706.0" y="106" text-anchor="middle" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="20" font-weight="700">Cline</text>
+  <text x="706.0" y="132" text-anchor="middle" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="14">paste + command</text>
+  <line x1="448" y1="170" x2="500" y2="170" stroke="#22c55e" stroke-width="5" marker-end="url(#arrG)"/>
+  <rect x="48" y="300" width="864" height="180" rx="14" fill="#111827" stroke="#38bdf8" stroke-width="5"/>
+  <text x="480.0" y="336" text-anchor="middle" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="20" font-weight="700">Command + traceback + expected</text>
+  <text x="480.0" y="362" text-anchor="middle" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="14">Do not trim the middle</text>
+</svg>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
+  <rect width="960" height="540" fill="#0a0f18"/>
+  <text x="48" y="44" fill="#22c55e" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="22" font-weight="bold">7. Review diff</text>
+  <rect x="48" y="80" width="860" height="56" rx="8" fill="rgba(34,197,94,0.25)" stroke="#4ade80" stroke-width="4"/>
+  <text x="64" y="118" fill="#bbf7d0" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="18" font-weight="bold">+ added lines</text>
+  <rect x="48" y="160" width="860" height="56" rx="8" fill="rgba(248,113,113,0.22)" stroke="#f87171" stroke-width="4"/>
+  <text x="64" y="198" fill="#fecaca" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="18" font-weight="bold">- removed lines</text>
+  <rect x="48" y="260" width="860" height="200" rx="14" fill="#1e293b" stroke="#fbbf24" stroke-width="5"/>
+  <text x="478.0" y="296" text-anchor="middle" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="20" font-weight="700">Accept</text>
+  <text x="478.0" y="322" text-anchor="middle" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="14">only after reading</text>
+</svg>

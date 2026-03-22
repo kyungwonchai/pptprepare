@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
+  <rect width="960" height="540" fill="#0a0f18"/>
+
+  <defs>
+    <marker id="arr" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#94a3b8"/>
+    </marker>
+    <marker id="arrG" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#22c55e"/>
+    </marker>
+  </defs>
+  <text x="48" y="48" fill="#22c55e" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="24" font-weight="bold">엑셀 처리 흐름 (한 줄 파이프)</text>
+  <rect x="60" y="80" width="100" height="60" rx="12" fill="#1e293b" stroke="#94a3b8" stroke-width="4"/>
+  <text x="110.0" y="108" text-anchor="middle" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="17" font-weight="bold">엑셀</text>
+  <text x="110.0" y="130" text-anchor="middle" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="13">파일</text>
+  <line x1="162" y1="110" x2="218" y2="110" stroke="#22c55e" stroke-width="5" marker-end="url(#arrG)"/>
+  <rect x="220" y="80" width="100" height="60" rx="12" fill="#1e293b" stroke="#94a3b8" stroke-width="4"/>
+  <text x="270.0" y="108" text-anchor="middle" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="17" font-weight="bold">요구</text>
+  <text x="270.0" y="130" text-anchor="middle" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="13">말로 적기</text>
+  <line x1="322" y1="110" x2="378" y2="110" stroke="#22c55e" stroke-width="5" marker-end="url(#arrG)"/>
+  <rect x="380" y="80" width="100" height="60" rx="12" fill="#1e293b" stroke="#94a3b8" stroke-width="4"/>
+  <text x="430.0" y="108" text-anchor="middle" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="17" font-weight="bold">Cline</text>
+  <text x="430.0" y="130" text-anchor="middle" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="13">AI</text>
+  <line x1="482" y1="110" x2="538" y2="110" stroke="#22c55e" stroke-width="5" marker-end="url(#arrG)"/>
+  <rect x="540" y="80" width="100" height="60" rx="12" fill="#1e293b" stroke="#94a3b8" stroke-width="4"/>
+  <text x="590.0" y="108" text-anchor="middle" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="17" font-weight="bold">스크립트</text>
+  <text x="590.0" y="130" text-anchor="middle" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="13">.py</text>
+  <line x1="642" y1="110" x2="698" y2="110" stroke="#22c55e" stroke-width="5" marker-end="url(#arrG)"/>
+  <rect x="700" y="80" width="100" height="60" rx="12" fill="#1e293b" stroke="#94a3b8" stroke-width="4"/>
+  <text x="750.0" y="108" text-anchor="middle" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="17" font-weight="bold">실행</text>
+  <text x="750.0" y="130" text-anchor="middle" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="13">터미널</text>
+  <line x1="802" y1="110" x2="858" y2="110" stroke="#22c55e" stroke-width="5" marker-end="url(#arrG)"/>
+  <rect x="860" y="80" width="80" height="60" rx="12" fill="#1e293b" stroke="#94a3b8" stroke-width="4"/>
+  <text x="900.0" y="108" text-anchor="middle" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="17" font-weight="bold">결과</text>
+  <text x="900.0" y="130" text-anchor="middle" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="13">xlsx·csv</text>
+  <text x="48" y="200" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="15">굵은 상자 = 한 단계 · 굵은 화살표 = 순서</text>
+</svg>

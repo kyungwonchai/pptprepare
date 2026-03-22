@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
+  <rect width="960" height="540" fill="#0a0f18"/>
+  <text x="48" y="44" fill="#22c55e" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="22" font-weight="bold">10. Commit / PR</text>
+  <rect x="48" y="70" width="864" height="100" rx="14" fill="#1e293b" stroke="#22c55e" stroke-width="5"/>
+  <text x="480.0" y="106" text-anchor="middle" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="20" font-weight="700">git commit</text>
+  <text x="480.0" y="132" text-anchor="middle" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="14">small logical units</text>
+  <rect x="48" y="190" width="864" height="140" rx="14" fill="#111827" stroke="#94a3b8" stroke-width="4"/>
+  <text x="480.0" y="226" text-anchor="middle" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="20" font-weight="700">Pull Request</text>
+  <text x="480.0" y="252" text-anchor="middle" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="14">what / why / how tested</text>
+  <rect x="48" y="350" width="864" height="130" rx="14" fill="#1e293b" stroke="#fbbf24" stroke-width="5"/>
+  <text x="480.0" y="386" text-anchor="middle" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="20" font-weight="700">CI green</text>
+  <text x="480.0" y="412" text-anchor="middle" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="14">then merge</text>
+</svg>

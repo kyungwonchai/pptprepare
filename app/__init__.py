@@ -7,7 +7,12 @@ from app.blueprints.slides import slides_bp
 
 def create_app(config_name: str = "default") -> Flask:
     from app.config import config_by_name
-    from app.data.slide_chapters import ENDPOINT_TO_SLIDE_NUM, SLIDE_CHAPTERS, TOTAL_SLIDES
+    from app.data.slide_chapters import (
+        ENDPOINT_TO_SLIDE_NUM,
+        SLIDE_CHAPTERS,
+        SLIDE_NAV_GROUPS,
+        TOTAL_SLIDES,
+    )
 
     app = Flask(
         __name__,
@@ -26,6 +31,7 @@ def create_app(config_name: str = "default") -> Flask:
         n = ENDPOINT_TO_SLIDE_NUM.get(ep) if ep else None
         return {
             "slide_chapters": SLIDE_CHAPTERS,
+            "slide_nav_groups": SLIDE_NAV_GROUPS,
             "current_slide_n": n,
             "total_slides": TOTAL_SLIDES,
         }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
+  <rect width="960" height="540" fill="#0a0f18"/>
+  <text x="48" y="44" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="24" font-weight="bold">Flask vs FastAPI</text>
+  <rect x="48" y="80" width="420" height="380" rx="14" fill="#1e293b" stroke="#22c55e" stroke-width="5"/>
+  <text x="258.0" y="116" text-anchor="middle" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="20" font-weight="700">Flask</text>
+  <text x="258.0" y="142" text-anchor="middle" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="14">pages + Jinja</text>
+  <rect x="492" y="80" width="420" height="380" rx="14" fill="#111827" stroke="#38bdf8" stroke-width="5"/>
+  <text x="702.0" y="116" text-anchor="middle" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="20" font-weight="700">FastAPI</text>
+  <text x="702.0" y="142" text-anchor="middle" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="14">JSON API + docs</text>
+  <text x="258" y="200" text-anchor="middle" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="18" font-weight="bold">Server HTML</text>
+  <text x="702" y="200" text-anchor="middle" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="18" font-weight="bold">SPA / mobile</text>
+</svg>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
+  <rect width="960" height="540" fill="#0a0f18"/>
+  <text x="48" y="44" fill="#22c55e" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="24" font-weight="bold">Write the task</text>
+  <rect x="48" y="70" width="864" height="380" rx="14" fill="#1e293b" stroke="#22c55e" stroke-width="5"/>
+  <text x="480.0" y="106" text-anchor="middle" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="20" font-weight="700">Cline panel</text>
+  <text x="480.0" y="132" text-anchor="middle" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="14">sheet + columns + output format</text>
+  <text x="72" y="130" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="17">- Which sheet</text>
+  <text x="72" y="170" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="17">- Which columns</text>
+  <text x="72" y="210" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="17">- Output: CSV or xlsx</text>
+</svg>

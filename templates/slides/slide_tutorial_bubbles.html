@@ -11,30 +11,32 @@
   </header>
 
   <div class="tutorial-bubble-stage">
-    <figure class="tutorial-bubble-figure" aria-label="실습 화면과 설명 말풍선">
+    <figure class="tutorial-bubble-figure" aria-label="실습 화면과 추가 메모">
       <div class="tutorial-bubble-visual">
         <img
-          class="tutorial-bubble-img"
-          src="{{ url_for('static', filename=image_path) }}"
+          class="tutorial-bubble-img{% if image_url is defined and image_url %} tutorial-bubble-img--ref{% endif %}"
+          src="{% if image_url is defined and image_url %}{{ image_url }}{% else %}{{ url_for('static', filename=image_path) }}{% endif %}"
           alt=""
           loading="lazy"
           width="960"
           height="540"
+          {% if image_url is defined and image_url %}referrerpolicy="no-referrer-when-downgrade"{% endif %}
         />
-        {% for b in bubbles %}
-          <div
-            class="tutorial-bubble-callout tutorial-bubble-callout--{{ b.align|default('right') }}"
-            style="top: {{ b.top }}%; left: {{ b.left }}%; width: min({{ b.w|default(42) }}%, 22rem);"
-          >
-            <div class="tutorial-bubble-callout-inner">
-              <span class="tutorial-bubble-num">{{ loop.index }}</span>
-              <p class="tutorial-bubble-text">{{ b.text }}</p>
-            </div>
-          </div>
-        {% endfor %}
       </div>
       {% if caption %}
         <figcaption class="tutorial-bubble-caption">{{ caption }}</figcaption>
+      {% endif %}
+      {% if bubbles %}
+        <div class="tutorial-bubble-notes" role="group" aria-label="추가 메모">
+          {% for b in bubbles %}
+            <div class="tutorial-bubble-note tutorial-bubble-note--{{ b.align|default('right') }}">
+              <div class="tutorial-bubble-note-inner">
+                <span class="tutorial-bubble-num">{{ loop.index }}</span>
+                <p class="tutorial-bubble-text">{{ b.text }}</p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
       {% endif %}
     </figure>
   </div>

@@ -1,8 +1,18 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("pptprepare:theme");
+          if (t === "light" || t === "dark") {
+            document.documentElement.setAttribute("data-theme", t);
+          }
+        } catch (e) {}
+      })();
+    </script>
     <title>{% block title %}{{ app_name }}{% endblock %}</title>
     <link
       rel="stylesheet"
@@ -12,22 +22,58 @@
     {% block extra_head %}{% endblock %}
   </head>
   <body class="{% block body_class %}{% endblock %} mode-ppt">
+    <script>
+      (function () {
+        if (/\bexport=/.test(location.search)) {
+          document.body.classList.add("export-capture");
+        }
+      })();
+    </script>
     <div class="app-shell">
       <aside class="deck-chapter" id="deck-chapter" aria-label="챕터 목록">
         <div class="deck-chapter-inner">
           <p class="deck-chapter-kicker">슬라이드</p>
           <nav class="deck-chapter-nav" id="chapter-panel" aria-label="페이지 바로가기">
-            <ul class="deck-chapter-list">
-              {% for ch in slide_chapters %}
-                <li>
-                  <a
-                    href="{{ url_for(ch.endpoint) }}"
-                    class="deck-chapter-link{% if current_slide_n == ch.n %} is-active{% endif %}"
-                    {% if current_slide_n == ch.n %}aria-current="page"{% endif %}
+            <ul
+              class="deck-chapter-tree"
+              id="deck-chapter-tree"
+              data-current-n="{{ current_slide_n or 0 }}"
+            >
+              {% for g in slide_nav_groups %}
+                {% set first_n = g.chapters[0].n %}
+                {% set last_n = g.chapters[-1].n %}
+                {% set in_group = current_slide_n and current_slide_n >= first_n and current_slide_n <= last_n %}
+                <li
+                  class="deck-chapter-group{% if in_group %} is-expanded{% else %} is-collapsed{% endif %}"
+                  data-group-id="{{ g.id }}"
+                  data-range-min="{{ first_n }}"
+                  data-range-max="{{ last_n }}"
+                >
+                  <button
+                    type="button"
+                    class="deck-chapter-group-toggle"
+                    aria-expanded="{{ 'true' if in_group else 'false' }}"
+                    aria-controls="deck-nav-group-{{ g.id }}"
+                    id="deck-nav-btn-{{ g.id }}"
                   >
-                    <span class="deck-chapter-num">{{ ch.n }}</span>
-                    <span class="deck-chapter-title">{{ ch.title }}</span>
-                  </a>
+                    <span class="deck-chapter-chevron" aria-hidden="true"></span>
+                    <span class="deck-chapter-group-label">{{ g.label }}</span>
+                    <span class="deck-chapter-group-range">{{ first_n }}–{{ last_n }}</span>
+                  </button>
+                  <ul class="deck-chapter-list deck-chapter-list--nested" id="deck-nav-group-{{ g.id }}">
+                    {% for ch in g.chapters %}
+                      <li>
+                        <a
+                          href="{{ url_for(ch.endpoint) }}"
+                          class="deck-chapter-link{% if current_slide_n == ch.n %} is-active{% endif %}"
+                          {% if current_slide_n == ch.n %}aria-current="page"{% endif %}
+                        >
+                          <span class="deck-chapter-num">{{ ch.n }}</span>
+                          <span class="deck-chapter-title">{{ ch.title }}</span>
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
                 </li>
               {% endfor %}
             </ul>
@@ -46,7 +92,7 @@
       </aside>
 
       <div class="deck-workspace">
-        <div class="deck-toolbar" role="toolbar" aria-label="보기 모드">
+        <div class="deck-toolbar" role="toolbar" aria-label="보기·테마">
           <span class="deck-toolbar-hint">보기</span>
           <div class="deck-mode-switch" role="group" aria-label="PPT 또는 탐색">
             <button type="button" class="deck-mode-btn" id="mode-ppt-btn" data-deck-mode="ppt" aria-pressed="true" title="16:9 발표 화면">
@@ -56,6 +102,20 @@
               탐색
             </button>
           </div>
+          <span class="deck-toolbar-divider" aria-hidden="true"></span>
+          <span class="deck-toolbar-hint deck-toolbar-hint--theme">테마</span>
+          <div class="deck-theme-switch" role="group" aria-label="화면 테마">
+            <button type="button" class="deck-theme-btn" id="theme-light-btn" data-theme-choice="light" aria-pressed="false" title="밝은 배경">
+              라이트
+            </button>
+            <button type="button" class="deck-theme-btn" id="theme-dark-btn" data-theme-choice="dark" aria-pressed="true" title="어두운 배경">
+              다크
+            </button>
+          </div>
+          <span class="deck-toolbar-divider" aria-hidden="true"></span>
+          <button type="button" class="deck-toolbar-export" id="export-open-btn" title="선택한 슬라이드 PDF/PPTX 내보내기">
+            내보내기
+          </button>
         </div>
 
         <div class="slide-root">
@@ -76,6 +136,56 @@
         </nav>
       </div>
     </div>
+
+    <dialog class="export-dialog" id="export-dialog" aria-labelledby="export-dialog-title" data-export-url="{{ url_for('slides.export_download') }}">
+      <div class="export-dialog-inner">
+        <h2 id="export-dialog-title" class="export-dialog-title">슬라이드 내보내기</h2>
+        <p class="export-dialog-lead">형식·캡처 테마를 고른 뒤, 포함할 슬라이드를 선택하세요. 서버가 Playwright로 화면을 캡처합니다.</p>
+        <div class="export-dialog-row">
+          <span class="export-dialog-label">형식</span>
+          <label class="export-radio"><input type="radio" name="export-format" value="pdf" checked /> PDF</label>
+          <label class="export-radio"><input type="radio" name="export-format" value="pptx" /> PowerPoint (PPTX)</label>
+        </div>
+        <div class="export-dialog-row">
+          <span class="export-dialog-label">캡처 테마</span>
+          <label class="export-radio"><input type="radio" name="export-theme" value="dark" checked /> 다크</label>
+          <label class="export-radio"><input type="radio" name="export-theme" value="light" /> 라이트</label>
+        </div>
+        <div class="export-dialog-actions">
+          <button type="button" class="export-btn export-btn--ghost" id="export-select-all">전체 선택</button>
+          <button type="button" class="export-btn export-btn--ghost" id="export-clear">선택 해제</button>
+        </div>
+        <div class="export-slide-list" id="export-slide-list">
+          {% for g in slide_nav_groups %}
+            <div class="export-group" data-group-id="{{ g.id }}">
+              <label class="export-group-head">
+                <input type="checkbox" class="export-group-cb" data-group-id="{{ g.id }}" />
+                <span class="export-group-label">{{ g.label }}</span>
+                <span class="export-group-range">{{ g.chapters[0].n }}–{{ g.chapters[-1].n }}</span>
+              </label>
+              <ul class="export-group-slides">
+                {% for ch in g.chapters %}
+                  <li>
+                    <label class="export-slide-row">
+                      <input type="checkbox" name="export-slide" value="{{ ch.n }}" class="export-slide-cb" />
+                      <span class="export-slide-num">{{ ch.n }}</span>
+                      <span class="export-slide-title">{{ ch.title }}</span>
+                    </label>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endfor %}
+        </div>
+        <p class="export-dialog-hint" id="export-status" role="status"></p>
+        <div class="export-dialog-footer">
+          <button type="button" class="export-btn export-btn--ghost" id="export-cancel">닫기</button>
+          <button type="button" class="export-btn export-btn--primary" id="export-submit">다운로드</button>
+        </div>
+      </div>
+    </dialog>
+
     <script src="{{ url_for('static', filename='js/deck.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/export.js') }}" defer></script>
   </body>
 </html>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
+  <rect width="960" height="540" fill="#0a0f18"/>
+  <text x="48" y="44" fill="#38bdf8" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="22" font-weight="bold">6. @context</text>
+  <rect x="48" y="70" width="380" height="200" rx="14" fill="#1e293b" stroke="#22c55e" stroke-width="5"/>
+  <text x="238.0" y="106" text-anchor="middle" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="20" font-weight="700">@src/app.py</text>
+  <text x="238.0" y="132" text-anchor="middle" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="14">attach files</text>
+  <rect x="500" y="70" width="412" height="200" rx="14" fill="#111827" stroke="#f87171" stroke-width="5"/>
+  <text x="706.0" y="106" text-anchor="middle" fill="#f1f5f5" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="20" font-weight="700">ignore</text>
+  <text x="706.0" y="132" text-anchor="middle" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="14">node_modules / .venv</text>
+  <text x="48" y="320" fill="#cbd5e1" font-family="Pretendard, system-ui, -apple-system, sans-serif" font-size="17">Bold: only what matters</text>
+</svg>
