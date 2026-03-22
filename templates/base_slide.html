@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}{{ app_name }}{% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slides.css') }}" />
+    {% block extra_head %}{% endblock %}
+  </head>
+  <body class="{% block body_class %}{% endblock %} mode-ppt">
+    <div class="app-shell">
+      <aside class="deck-chapter" id="deck-chapter" aria-label="챕터 목록">
+        <div class="deck-chapter-inner">
+          <p class="deck-chapter-kicker">슬라이드</p>
+          <nav class="deck-chapter-nav" id="chapter-panel" aria-label="페이지 바로가기">
+            <ul class="deck-chapter-list">
+              {% for ch in slide_chapters %}
+                <li>
+                  <a
+                    href="{{ url_for(ch.endpoint) }}"
+                    class="deck-chapter-link{% if current_slide_n == ch.n %} is-active{% endif %}"
+                    {% if current_slide_n == ch.n %}aria-current="page"{% endif %}
+                  >
+                    <span class="deck-chapter-num">{{ ch.n }}</span>
+                    <span class="deck-chapter-title">{{ ch.title }}</span>
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </nav>
+        </div>
+        <button
+          type="button"
+          class="deck-chapter-tab"
+          id="chapter-toggle"
+          aria-expanded="false"
+          aria-controls="chapter-panel"
+          title="챕터 목록 펼치기 · 접기"
+        >
+          <span class="deck-chapter-tab-label" aria-hidden="true">챕터</span>
+        </button>
+      </aside>
+
+      <div class="deck-workspace">
+        <div class="deck-toolbar" role="toolbar" aria-label="보기 모드">
+          <span class="deck-toolbar-hint">보기</span>
+          <div class="deck-mode-switch" role="group" aria-label="PPT 또는 탐색">
+            <button type="button" class="deck-mode-btn" id="mode-ppt-btn" data-deck-mode="ppt" aria-pressed="true" title="16:9 발표 화면">
+              PPT
+            </button>
+            <button type="button" class="deck-mode-btn" id="mode-browse-btn" data-deck-mode="browse" aria-pressed="false" title="스크롤·읽기 위주">
+              탐색
+            </button>
+          </div>
+        </div>
+
+        <div class="slide-root">
+          <div class="slide-frame">
+            <div class="slide-inner">{% block slide_content %}{% endblock %}</div>
+          </div>
+        </div>
+
+        <nav class="slide-nav" aria-label="슬라이드 번호 이동">
+          {% for ch in slide_chapters %}
+            <a
+              href="{{ url_for(ch.endpoint) }}"
+              class="{% if current_slide_n == ch.n %}is-current{% endif %}"
+              {% if current_slide_n == ch.n %}aria-current="page"{% endif %}
+              >{{ ch.n }}</a
+            >
+          {% endfor %}
+        </nav>
+      </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/deck.js') }}" defer></script>
+  </body>
+</html>

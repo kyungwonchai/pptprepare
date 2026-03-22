@@ -1,0 +1,19 @@
+{% extends "base_slide.html" %}
+{% block title %}{{ app_name }} — {{ page_title }}{% endblock %}
+{% block body_class %}slide-workflow ppt-slide{% endblock %}
+{% block slide_content %}
+  <header class="ppt-slide-header">
+    <p class="ppt-kicker">본업 · 사내 · 집–회사</p>
+    <h1 class="ppt-title font-display">{{ page_title }}</h1>
+  </header>
+  <div class="ppt-workflow-stack">
+    {% for sec in sections %}
+      <section class="ppt-wf-block">
+        <h2 class="ppt-wf-h">{{ sec.title }}</h2>
+        {% for p in sec.paragraphs %}
+          <p class="ppt-wf-p">{{ p }}</p>
+        {% endfor %}
+      </section>
+    {% endfor %}
+  </div>
+{% endblock %}

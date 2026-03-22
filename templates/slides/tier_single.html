@@ -1,0 +1,23 @@
+{% extends "base_slide.html" %}
+{% block title %}{{ app_name }} — {{ block.title }}{% endblock %}
+{% block body_class %}slide-tier-single ppt-slide{% endblock %}
+{% block slide_content %}
+  <header class="ppt-slide-header">
+    <p class="ppt-kicker">목적 유형 {{ block.n }}</p>
+    <h1 class="ppt-title font-display">{{ block.title }}</h1>
+  </header>
+  <p class="ppt-lead">{{ block.role }}</p>
+  <h2 class="ppt-sub">운영 포인트</h2>
+  <ul class="ppt-bullets">
+    {% for line in block.cultivate %}
+      <li>{{ line }}</li>
+    {% endfor %}
+  </ul>
+  {% if block.links %}
+    <div class="ppt-link-row">
+      {% for link in block.links %}
+        <a class="ppt-link-chip" href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.label }}</a>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endblock %}

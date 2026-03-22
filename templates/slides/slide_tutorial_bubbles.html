@@ -1,0 +1,45 @@
+{% extends "base_slide.html" %}
+{% block title %}{{ app_name }} — {{ page_title }}{% endblock %}
+{% block body_class %}slide-tutorial-bubbles ppt-slide{% endblock %}
+{% block slide_content %}
+  <header class="ppt-slide-header tutorial-bubble-header">
+    <p class="ppt-kicker tutorial-series tutorial-series--{{ series }}">{{ kicker }}</p>
+    <h1 class="ppt-title font-display tutorial-bubble-title">{{ page_title }}</h1>
+    {% if lead %}
+      <p class="ppt-lead-sub ppt-tech-lead">{{ lead }}</p>
+    {% endif %}
+  </header>
+
+  <div class="tutorial-bubble-stage">
+    <figure class="tutorial-bubble-figure" aria-label="실습 화면과 설명 말풍선">
+      <div class="tutorial-bubble-visual">
+        <img
+          class="tutorial-bubble-img"
+          src="{{ url_for('static', filename=image_path) }}"
+          alt=""
+          loading="lazy"
+          width="960"
+          height="540"
+        />
+        {% for b in bubbles %}
+          <div
+            class="tutorial-bubble-callout tutorial-bubble-callout--{{ b.align|default('right') }}"
+            style="top: {{ b.top }}%; left: {{ b.left }}%; width: min({{ b.w|default(42) }}%, 22rem);"
+          >
+            <div class="tutorial-bubble-callout-inner">
+              <span class="tutorial-bubble-num">{{ loop.index }}</span>
+              <p class="tutorial-bubble-text">{{ b.text }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      {% if caption %}
+        <figcaption class="tutorial-bubble-caption">{{ caption }}</figcaption>
+      {% endif %}
+    </figure>
+  </div>
+
+  {% if foot_note %}
+    <p class="tutorial-bubble-foot">{{ foot_note }}</p>
+  {% endif %}
+{% endblock %}

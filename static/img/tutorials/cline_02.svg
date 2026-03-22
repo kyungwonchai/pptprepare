@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
+  <rect width="960" height="540" fill="#0f172a"/>
+  <rect x="480" y="0" width="480" height="540" fill="#0c1222" stroke="#334155"/>
+  <text x="504" y="40" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="14">CLINE</text>
+  <rect x="504" y="64" width="432" height="56" fill="#1e293b" rx="6" stroke="#475569"/>
+  <text x="520" y="98" fill="#cbd5e1" font-family="system-ui,sans-serif" font-size="12">ë≈ ¿‹ Ö%&</text>
+  <rect x="504" y="140" width="432" height="200" fill="#020617" rx="6" stroke="#334155"/>
+  <text x="520" y="176" fill="#64748b" font-family="ui-monospace,monospace" font-size="11">plan / act ®‹ Ò</text>
+  <rect x="48" y="48" width="400" height="440" fill="#111827" stroke="#334155" rx="4"/>
+  <text x="72" y="88" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">EXPLORER</text>
+  <text x="72" y="520" fill="#475569" font-family="system-ui,sans-serif" font-size="11">Cline  ë≈ Ö% (placeholder)</text>
+</svg>

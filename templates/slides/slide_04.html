@@ -1,0 +1,41 @@
+{% extends "base_slide.html" %}
+{% block title %}{{ app_name }} — 목적별 유형 개요{% endblock %}
+{% block body_class %}slide-04{% endblock %}
+{% block slide_content %}
+  <header class="slide-header">
+    <h1 class="font-display">바이브 코딩 — 제작물의 목적에 따른 유형</h1>
+    <p>
+      여기서는 <strong>무엇을 만들·쌓·돌릴 목적인지</strong>에 따라 층을 나눕니다. <strong>목적 유형 1이 맨 위(가장 좁음)</strong>이고, 아래로 갈수록 범위가 넓어집니다. Cline 등은 <strong>목적 유형 2</strong> 근처에서 구현 자유도가 크게 열리고, <strong>유형을 적용하는 순서는 사람마다</strong> 달라도 됩니다. 상세는 슬라이드 5~10.
+    </p>
+    <p class="slide-04-extra-types">
+      같은 제작물이라도 <strong>다른 축</strong>으로 나눌 수 있습니다. 예: <strong>내부용 vs 외부 공개</strong>, <strong>시험·프로토타입 vs 운영</strong>, <strong>배움·정리 vs 바로 쓰는 산출물</strong>, <strong>혼자 쓰기 vs 팀 합의</strong>, <strong>일회성·이벤트 vs 반복 업무</strong>. 아래 여섯 층과 겹쳐 적어 두면, 회의·요구사항 정리에도 통합니다.
+    </p>
+    <p class="slide-04-principle">
+      실행 원칙은 표지와 같습니다: <strong>자기주도</strong>를 전제로, 사내는 Cline·밖은 구독 앱에서 천천히, <strong>짧은 질문은 무료·복잡한 일은 유료나 사내 허용 인공지능</strong>에 맡깁니다.
+    </p>
+  </header>
+
+  <div class="vibe-pyramid-wrap" role="img" aria-label="목적 유형 1에서 6까지 아래로 넓어지는 스택">
+    {% set widths = [38, 48, 56, 64, 74, 92] %}
+    {% for t in flow_steps %}
+      <div class="vibe-tier-block" style="width: {{ widths[t.n - 1] }}%">
+        <div class="vibe-tier-inner">
+          <span class="vibe-tier-num" title="목적 유형 {{ t.n }}">{{ t.n }}</span>
+          <div class="vibe-tier-text">
+            <strong>{{ t.label }}</strong>
+            <span>{{ t.one_liner }}</span>
+            {% if t.links %}
+              <div class="vibe-tier-links">
+                {% for link in t.links %}
+                  <a class="tier-chip" href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.label }}</a>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <p class="vibe-pyramid-foot">목적별 유형(스택): 5~10 · 운영: 11~12 · 워크플로: 13~14 · 영감: 15 · 보충: 16~55 (기술·에이전트·전망·실습 데모)</p>
+{% endblock %}

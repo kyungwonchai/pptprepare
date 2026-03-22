@@ -1,0 +1,47 @@
+{% extends "base_slide.html" %}
+{% block title %}{{ app_name }} — {{ page_title }}{% endblock %}
+{% block body_class %}slide-tech ppt-slide slide-feature-plain{% endblock %}
+{% block slide_content %}
+  <header class="ppt-slide-header ppt-slide-header--feature">
+    <p class="ppt-kicker">{{ kicker }}</p>
+    <h1 class="ppt-title font-display">{{ page_title }}</h1>
+    <p class="ppt-lead-sub ppt-tech-lead">{{ lead }}</p>
+    {% if metaphor %}
+      <p class="ppt-metaphor"><strong>비유</strong> — {{ metaphor }}</p>
+    {% endif %}
+    {% if usage_plain %}
+      <p class="ppt-usage-plain"><strong>쉬운 사용법</strong> — {{ usage_plain }}</p>
+    {% endif %}
+  </header>
+  {% if diagram_svg %}
+    <figure class="ppt-feature-figure" aria-hidden="true">{{ diagram_svg | safe }}</figure>
+  {% endif %}
+  <div class="ppt-tech-body">
+    {% for sec in sections %}
+      <section class="ppt-tech-sec">
+        <h2 class="ppt-tech-h">{{ sec.title }}</h2>
+        {% for p in sec.paragraphs %}
+          <p class="ppt-tech-p">{{ p }}</p>
+        {% endfor %}
+      </section>
+    {% endfor %}
+    {% if compare_rows %}
+      <h2 class="ppt-tech-h ppt-compare-section-title">네 제품만 짧게 (위에서 용어는 이미 한 번 정리함)</h2>
+      <div class="ppt-compare-grid" role="group" aria-label="네 가지 도구에서 부르는 이름과 짧은 설명">
+        {% for row in compare_rows %}
+          <div class="ppt-compare-card">
+            <h3 class="ppt-compare-label">{{ row.label }}</h3>
+            <p class="ppt-compare-bite">{{ row.bite }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+  {% if links %}
+    <div class="ppt-link-row ppt-tech-links">
+      {% for link in links %}
+        <a class="ppt-link-chip" href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.label }}</a>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endblock %}

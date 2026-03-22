@@ -1,0 +1,28 @@
+{% extends "base_slide.html" %}
+{% block title %}{{ app_name }} — 표지{% endblock %}
+{% block body_class %}slide-01{% endblock %}
+{% block slide_content %}
+  <div class="cover-badge">Lecture deck · MS PowerPoint paste</div>
+  <h1 class="cover-title font-display">{{ app_name }}</h1>
+  <p class="cover-sub">
+    도구(2)~관계도(3)~<strong>제작물의 목적에 따른 유형</strong>(4~10)~운영(11~12)~워크플로(13~14)~영감(15)~보충(16~55): 파이썬·자동화·연결·에이전트(21~25)·공통 기능(26~33)·전망·노하우(34~43)·실습·말풍선(44~55). 총 {{ total_slides }}장. 좌측 챕터 · PPT/탐색.
+  </p>
+  <section class="cover-principles" aria-label="실행 원칙 요약">
+    <p class="cover-principle-lead">자기주도학습을 바탕으로, 맥락에 맞게 도구와 비용을 나눕니다.</p>
+    <ul class="cover-principle-list">
+      <li><span class="cover-principle-tag">사내</span> 사내 레포에서는 Cline을 중심에 두고 룰·패턴과 맞춰 구현합니다.</li>
+      <li><span class="cover-principle-tag">외부</span> 집·이동 중에는 구독형 앱으로 시간을 두고 설계·용어를 다듬습니다.</li>
+      <li><span class="cover-principle-tag">무료 AI</span> 짧은 질문·용어 확인 위주로 씁니다.</li>
+      <li><span class="cover-principle-tag">복잡한 코딩</span> 여러 파일·에이전트급 작업은 유료 플랜이나 사내 허용 모델로 진행합니다.</li>
+    </ul>
+  </section>
+  <div class="cover-footer">
+    <div class="cover-meta">
+      Flask · 포트 54321<br />
+      슬라이드 1 / {{ total_slides }}
+    </div>
+    <div class="cover-deco" aria-hidden="true">
+      <span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+{% endblock %}

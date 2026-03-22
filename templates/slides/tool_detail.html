@@ -1,0 +1,36 @@
+{% extends "base_slide.html" %}
+{% from "includes/tool_icons.html" import render_icon %}
+{% block title %}{{ app_name }} — {{ tool.name }}{% endblock %}
+{% block body_class %}tool-detail{% endblock %}
+
+{% block slide_content %}
+  <header class="detail-header">
+    <div class="detail-hero-icon" aria-hidden="true">{{ render_icon(tool.icon) }}</div>
+    <div class="detail-hero-text">
+      <p class="detail-category">{{ tool.category_label }}</p>
+      <h1 class="font-display detail-title">{{ tool.name }}</h1>
+      <p class="detail-tagline">{{ tool.tagline }}</p>
+    </div>
+  </header>
+
+  <div class="detail-body">
+    {% for para in tool.detail %}
+      <p class="detail-para">{{ para }}</p>
+    {% endfor %}
+  </div>
+
+  <footer class="detail-links">
+    <h2 class="detail-links-title">바로가기</h2>
+    <ul class="detail-link-list">
+      {% for link in tool.links %}
+        <li>
+          <a class="detail-external-link" href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.label }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </footer>
+
+  <p class="detail-back">
+    <a href="{{ url_for('slides.slide_02') }}">← 분류별 역할로 돌아가기</a>
+  </p>
+{% endblock %}

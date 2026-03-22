@@ -1,0 +1,32 @@
+{% extends "base_slide.html" %}
+{% block title %}{{ app_name }} — 프로세스 · 영감{% endblock %}
+{% block body_class %}slide-inspiration ppt-slide{% endblock %}
+{% block slide_content %}
+  <header class="ppt-slide-header">
+    <p class="ppt-kicker">참고</p>
+    <h1 class="ppt-title font-display">진행 방식 · 링크</h1>
+    <p class="ppt-lead-sub">정답은 하나가 아닙니다. 아래는 흔한 패턴과 공식 문서입니다.</p>
+  </header>
+
+  <div class="ppt-inspiration-body">
+    <section class="ppt-insp-sec">
+      <h2 class="ppt-insp-h">진행 방식</h2>
+      <ul class="ppt-bullets ppt-bullets--tight">
+        {% for line in process_notes %}
+          <li>{{ line }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    {% for group in link_groups %}
+      <section class="ppt-insp-sec">
+        <h2 class="ppt-insp-h">{{ group.title }}</h2>
+        <div class="ppt-insp-chips">
+          {% for link in group.links %}
+            <a class="ppt-link-chip" href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.label }}</a>
+          {% endfor %}
+        </div>
+      </section>
+    {% endfor %}
+  </div>
+{% endblock %}

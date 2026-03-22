@@ -1,0 +1,28 @@
+{% extends "base_slide.html" %}
+{% from "includes/tool_icons.html" import render_icon %}
+{% block title %}{{ app_name }} — 도구 분류{% endblock %}
+{% block body_class %}slide-02{% endblock %}
+
+{% block slide_content %}
+  <header class="slide-header slide-header--ppt">
+    <h1 class="font-display">분류별 역할</h1>
+    <p>한 줄 요약입니다. 누르면 상세·링크 페이지로 이동합니다.</p>
+  </header>
+
+  <div class="three-cols">
+    {% for cat in categories %}
+      <section class="cat-block" aria-labelledby="cat-{{ cat.id }}">
+        <h2 id="cat-{{ cat.id }}">{{ cat.title }}</h2>
+        {% for tool in cat.tools %}
+          <a class="tool-row tool-row-link" href="{{ url_for('slides.tool_detail', slug=tool.slug) }}">
+            <span class="tool-row-icon" aria-hidden="true">{{ render_icon(tool.icon) }}</span>
+            <div class="tool-body">
+              <strong>{{ tool.name }}</strong>
+              <span>{{ tool.tagline }}</span>
+            </div>
+          </a>
+        {% endfor %}
+      </section>
+    {% endfor %}
+  </div>
+{% endblock %}

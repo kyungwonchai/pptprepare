@@ -1,0 +1,19 @@
+{% extends "base_slide.html" %}
+{% block title %}{{ app_name }} — {{ page_title }}{% endblock %}
+{% block body_class %}slide-knowhow ppt-slide{% endblock %}
+{% block slide_content %}
+  <header class="ppt-slide-header">
+    <p class="ppt-kicker">{{ kicker|default("운영 노하우") }}</p>
+    <h1 class="ppt-title font-display">{{ page_title }}</h1>
+  </header>
+  <div class="ppt-knowhow-cols">
+    {% for sec in sections %}
+      <section class="ppt-knowhow-block">
+        <h2 class="ppt-knowhow-h">{{ sec.title }}</h2>
+        {% for para in sec.body %}
+          <p class="ppt-knowhow-line">{{ para }}</p>
+        {% endfor %}
+      </section>
+    {% endfor %}
+  </div>
+{% endblock %}

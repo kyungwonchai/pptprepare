@@ -1,0 +1,139 @@
+{% extends "base_slide.html" %}
+{% block title %}{{ app_name }} — 관계도{% endblock %}
+{% block body_class %}slide-03{% endblock %}
+{% block slide_content %}
+  <header class="slide-header">
+    <h1 class="font-display">생태계 관계도</h1>
+    <p>
+      개발 도구에서 코드를 작성하고, 깃허브·데이터 저장소·클라우드와 이어지며, 인공지능 도구가 옆에서 돕습니다.
+      <strong>맥락</strong>에 따라 사내는 Cline·편집기에 가깝게, 밖에서는 구독 앱으로 천천히 생각하는 식으로 나눕니다 (표지·운영 슬라이드와 같은 줄기).
+    </p>
+  </header>
+
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 920 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="diagTitle diagDesc">
+      <title id="diagTitle">개발 도구 생태계 관계</title>
+      <desc id="diagDesc">
+        개발자는 IDE에서 작업하고 GitHub와 Python 런타임을 거쳐 데이터베이스와 클라우드에 연결되며, AI 도구가 IDE와 상호작용합니다.
+      </desc>
+
+      <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L9,3 z" fill="#5a6a82" />
+        </marker>
+        <linearGradient id="boxGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="rgba(61,255,156,0.25)" />
+          <stop offset="100%" stop-color="rgba(18,24,38,0.9)" />
+        </linearGradient>
+        <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="4" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+
+      <!-- 레이어 배경 -->
+      <rect x="40" y="28" width="840" height="100" rx="10" fill="rgba(61,255,156,0.06)" stroke="rgba(61,255,156,0.25)" />
+      <text x="60" y="58" fill="#3dff9c" font-size="13" font-family="Pretendard, sans-serif" font-weight="600">AI 레이어</text>
+
+      <rect x="40" y="148" width="840" height="120" rx="10" fill="rgba(88,133,242,0.07)" stroke="rgba(88,133,242,0.3)" />
+      <text x="60" y="178" fill="#8aa4ff" font-size="13" font-family="Pretendard, sans-serif" font-weight="600">IDE · 런타임 · 협업</text>
+
+      <rect x="40" y="288" width="840" height="92" rx="10" fill="rgba(232,168,56,0.08)" stroke="rgba(232,168,56,0.35)" />
+      <text x="60" y="318" fill="#e8a838" font-size="13" font-family="Pretendard, sans-serif" font-weight="600">데이터 · 인프라</text>
+
+      <!-- AI boxes -->
+      <g filter="url(#softGlow)">
+        <rect x="80" y="68" width="120" height="44" rx="6" fill="url(#boxGrad)" stroke="rgba(255,255,255,0.12)" />
+        <text x="140" y="95" text-anchor="middle" fill="#e8edf5" font-size="12" font-family="Pretendard, sans-serif">Gemini · GPT</text>
+
+        <rect x="230" y="68" width="120" height="44" rx="6" fill="url(#boxGrad)" stroke="rgba(255,255,255,0.12)" />
+        <text x="290" y="95" text-anchor="middle" fill="#e8edf5" font-size="12" font-family="Pretendard, sans-serif">Grok</text>
+
+        <rect x="380" y="68" width="120" height="44" rx="6" fill="url(#boxGrad)" stroke="rgba(255,255,255,0.12)" />
+        <text x="440" y="95" text-anchor="middle" fill="#e8edf5" font-size="12" font-family="Pretendard, sans-serif">Cursor · Cline</text>
+      </g>
+
+      <!-- IDE row -->
+      <rect x="80" y="198" width="110" height="48" rx="6" fill="rgba(18,24,38,0.95)" stroke="rgba(255,255,255,0.15)" />
+      <text x="135" y="228" text-anchor="middle" fill="#e8edf5" font-size="12" font-family="Pretendard, sans-serif">VS Code</text>
+
+      <rect x="210" y="198" width="110" height="48" rx="6" fill="rgba(18,24,38,0.95)" stroke="rgba(255,255,255,0.15)" />
+      <text x="265" y="228" text-anchor="middle" fill="#e8edf5" font-size="12" font-family="Pretendard, sans-serif">JetBrains</text>
+
+      <rect x="340" y="198" width="110" height="48" rx="6" fill="rgba(18,24,38,0.95)" stroke="rgba(255,255,255,0.15)" />
+      <text x="395" y="228" text-anchor="middle" fill="#e8edf5" font-size="12" font-family="Pretendard, sans-serif">Android / VS</text>
+
+      <rect x="470" y="198" width="110" height="48" rx="6" fill="rgba(18,24,38,0.95)" stroke="rgba(255,255,255,0.15)" />
+      <text x="525" y="228" text-anchor="middle" fill="#e8edf5" font-size="12" font-family="Pretendard, sans-serif">Unity · Blender</text>
+
+      <rect x="600" y="198" width="110" height="48" rx="6" fill="rgba(18,24,38,0.95)" stroke="rgba(255,255,255,0.15)" />
+      <text x="655" y="228" text-anchor="middle" fill="#e8edf5" font-size="12" font-family="Pretendard, sans-serif">Python</text>
+
+      <rect x="730" y="198" width="110" height="48" rx="6" fill="rgba(18,24,38,0.95)" stroke="rgba(255,255,255,0.15)" />
+      <text x="785" y="228" text-anchor="middle" fill="#e8edf5" font-size="12" font-family="Pretendard, sans-serif">GitHub</text>
+
+      <!-- Infra row -->
+      <rect x="120" y="328" width="140" height="40" rx="6" fill="rgba(18,24,38,0.95)" stroke="rgba(232,168,56,0.4)" />
+      <text x="190" y="353" text-anchor="middle" fill="#e8edf5" font-size="12" font-family="Pretendard, sans-serif">MySQL · Postgres</text>
+
+      <rect x="290" y="328" width="140" height="40" rx="6" fill="rgba(18,24,38,0.95)" stroke="rgba(232,168,56,0.4)" />
+      <text x="360" y="353" text-anchor="middle" fill="#e8edf5" font-size="12" font-family="Pretendard, sans-serif">SQL Server</text>
+
+      <rect x="460" y="328" width="140" height="40" rx="6" fill="rgba(18,24,38,0.95)" stroke="rgba(232,168,56,0.4)" />
+      <text x="530" y="353" text-anchor="middle" fill="#e8edf5" font-size="12" font-family="Pretendard, sans-serif">Cloud</text>
+
+      <!-- Developer -->
+      <circle cx="460" cy="380" r="22" fill="rgba(61,255,156,0.15)" stroke="#3dff9c" stroke-width="2" />
+      <text x="460" y="386" text-anchor="middle" fill="#e8edf5" font-size="11" font-family="Pretendard, sans-serif" font-weight="700">개발자</text>
+
+      <!-- Arrows: AI to IDE -->
+      <path d="M140 112 L135 198" stroke="#5a6a82" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+      <path d="M440 112 L460 198" stroke="#5a6a82" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+      <path d="M290 112 L265 198" stroke="#5a6a82" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+
+      <!-- IDE to GitHub / Python internal -->
+      <path d="M655 222 L785 222" stroke="#5a6a82" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+      <text x="718" y="215" text-anchor="middle" fill="#8b96ab" font-size="9" font-family="Pretendard, sans-serif">push / PR</text>
+
+      <!-- IDE to DB -->
+      <path d="M135 246 L190 328" stroke="#5a6a82" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+      <path d="M395 246 L360 328" stroke="#5a6a82" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+      <path d="M525 246 L530 328" stroke="#5a6a82" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+
+      <!-- Python to Cloud -->
+      <path d="M655 246 L530 328" stroke="#5a6a82" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+      <text x="600" y="300" text-anchor="middle" fill="#8b96ab" font-size="9" font-family="Pretendard, sans-serif">배포·연동</text>
+
+      <!-- Dev to IDE (concept) -->
+      <path d="M460 358 L460 246" stroke="#3dff9c" stroke-width="1.5" fill="none" marker-end="url(#arrow)" opacity="0.85" />
+    </svg>
+  </div>
+
+  <div class="diagram-legend">
+    <span class="legend-dev">AI → IDE 보조·자동화</span>
+    <span class="legend-data">IDE ↔ GitHub · Python 실행</span>
+    <span class="legend-ai">앱·스크립트 → DB · Cloud</span>
+  </div>
+
+  <div class="diagram-context" role="region" aria-label="도구·비용 나누기">
+    <div class="diagram-context-card">
+      <h2 class="diagram-context-h">사내</h2>
+      <p>레포·정책 안에서는 Cline과 IDE에 붙여 구현·커밋. 비밀·내부 코드는 밖으로 안 나갑니다.</p>
+    </div>
+    <div class="diagram-context-card">
+      <h2 class="diagram-context-h">외부</h2>
+      <p>구독형 앱으로 시간을 두고 설계·문장을 다듬습니다. 짧은 질문은 무료 티어도 활용합니다.</p>
+    </div>
+    <div class="diagram-context-card">
+      <h2 class="diagram-context-h">무료 AI</h2>
+      <p>간단한 질문·정의·한 줄 요약. 긴 맥락은 끊어서 여러 번.</p>
+    </div>
+    <div class="diagram-context-card">
+      <h2 class="diagram-context-h">복잡한 코딩</h2>
+      <p>유료·사내 허용 모델·에이전트로 단계를 나누고, PR·커밋 단위를 작게 유지합니다.</p>
+    </div>
+  </div>
+{% endblock %}

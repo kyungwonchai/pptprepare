@@ -1,0 +1,38 @@
+{% macro si(path, alt) %}
+  <img
+    src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/{{ path }}.svg"
+    alt=""
+    role="presentation"
+    width="28"
+    height="28"
+    loading="lazy"
+  />
+{% endmacro %}
+
+{% macro silatest(path, alt) %}
+  <img
+    src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/{{ path }}.svg"
+    alt=""
+    role="presentation"
+    width="28"
+    height="28"
+    loading="lazy"
+  />
+{% endmacro %}
+
+{% macro grok_icon() %}
+  <svg class="icon-grok" width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
+    <rect width="32" height="32" rx="6" fill="rgba(61,255,156,0.12)" />
+    <path d="M9 10h3l4.5 6.2L21 10h3l-6 8.2V24h-2.8v-5.5L9 10z" fill="#e8edf5" />
+  </svg>
+{% endmacro %}
+
+{% macro render_icon(spec) %}
+  {% if spec.kind == "si" %}
+    {{ si(spec.slug, "") }}
+  {% elif spec.kind == "silatest" %}
+    {{ silatest(spec.slug, "") }}
+  {% elif spec.kind == "grok" %}
+    {{ grok_icon() }}
+  {% endif %}
+{% endmacro %}

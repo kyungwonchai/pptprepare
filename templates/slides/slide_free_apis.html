@@ -1,0 +1,77 @@
+{% extends "base_slide.html" %}
+{% block title %}{{ app_name }} — {{ page_title }}{% endblock %}
+{% block body_class %}slide-free-apis ppt-slide{% endblock %}
+{% block slide_content %}
+  <header class="ppt-slide-header ppt-slide-header--compact">
+    <p class="ppt-kicker">{{ kicker }}</p>
+    <h1 class="ppt-title font-display">{{ page_title }}</h1>
+    <p class="ppt-lead-sub">{{ lead }}</p>
+    <div class="free-api-meta-links">
+      {% for m in meta_links %}
+        <a class="ppt-link-chip" href="{{ m.url }}" target="_blank" rel="noopener noreferrer">{{ m.label }}</a>
+      {% endfor %}
+    </div>
+  </header>
+
+  <ul class="free-api-legend">
+    {% for line in legend %}
+      <li>{{ line }}</li>
+    {% endfor %}
+  </ul>
+
+  <div class="free-api-scroll">
+    {% for cat in categories %}
+      <section class="free-api-cat">
+        <h2 class="free-api-cat-title">{{ cat.title }}</h2>
+        <table class="free-api-table">
+          <thead>
+            <tr>
+              <th scope="col">API</th>
+              <th scope="col">용도</th>
+              <th scope="col">티어</th>
+              <th scope="col">문서·시작</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for a in cat.apis %}
+              <tr>
+                <td><strong>{{ a.name }}</strong></td>
+                <td>{{ a.use }}</td>
+                <td><span class="free-api-tier free-api-tier--{{ a.tier }}">{{ tier_labels[a.tier] }}</span></td>
+                <td><a href="{{ a.url }}" target="_blank" rel="noopener noreferrer" class="free-api-doc">문서</a></td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </section>
+    {% endfor %}
+
+    <section class="free-api-cat free-api-cat--enterprise">
+      <h2 class="free-api-cat-title">기업·클라우드·SaaS 무료 티어 (요약)</h2>
+      <p class="free-api-enterprise-note">
+        회사 프로젝트에서는 약관·개인정보·과금·SLA를 법무·구매와 확인한 뒤 사용합니다. 아래는 대표 링크입니다.
+      </p>
+      {% for ent in enterprise_blocks %}
+        <h3 class="free-api-subtitle">{{ ent.title }}</h3>
+        <table class="free-api-table free-api-table--enterprise">
+          <thead>
+            <tr>
+              <th scope="col">서비스</th>
+              <th scope="col">메모</th>
+              <th scope="col">가격·문서</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for it in ent.rows %}
+              <tr>
+                <td><strong>{{ it.name }}</strong></td>
+                <td>{{ it.notes }}</td>
+                <td><a href="{{ it.url }}" target="_blank" rel="noopener noreferrer" class="free-api-doc">링크</a></td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% endfor %}
+    </section>
+  </div>
+{% endblock %}
