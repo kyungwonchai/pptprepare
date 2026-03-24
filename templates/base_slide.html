@@ -124,16 +124,6 @@
           </div>
         </div>
 
-        <nav class="slide-nav" aria-label="슬라이드 번호 이동">
-          {% for ch in slide_chapters %}
-            <a
-              href="{{ url_for(ch.endpoint) }}"
-              class="{% if current_slide_n == ch.n %}is-current{% endif %}"
-              {% if current_slide_n == ch.n %}aria-current="page"{% endif %}
-              >{{ ch.n }}</a
-            >
-          {% endfor %}
-        </nav>
       </div>
     </div>
 

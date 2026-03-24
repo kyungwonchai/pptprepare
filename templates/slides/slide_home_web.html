@@ -1,0 +1,130 @@
+{% extends "base_slide.html" %}
+{% block title %}{{ app_name }} — {{ page_title }}{% endblock %}
+{% block body_class %}slide-home-web ppt-slide{% endblock %}
+{% block slide_content %}
+  <header class="ppt-slide-header ppt-slide-header--home-web">
+    <p class="ppt-kicker">{{ kicker }}</p>
+    <h1 class="ppt-title font-display">{{ page_title }}</h1>
+    {% if lead %}
+      <p class="ppt-lead-sub">{{ lead }}</p>
+    {% endif %}
+  </header>
+
+  {% if kind == "brain_roles" %}
+    <div class="home-web-diagram-wrap" role="img" aria-label="브레인스토밍에서 AI 역할 변화 흐름">
+      <svg class="home-web-svg" viewBox="0 0 920 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <marker id="brainArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8 z" fill="#94a3b8" />
+          </marker>
+        </defs>
+
+        <rect x="70" y="34" width="780" height="54" rx="10" fill="rgba(99,102,241,0.2)" stroke="rgba(129,140,248,0.55)" stroke-width="2.4" />
+        <text x="460" y="56" text-anchor="middle" fill="#e2e8f0" font-size="13" font-family="Pretendard, sans-serif" font-weight="800">팀 아이디어 모음 (문제 · 고객 · 기능 · 우선순위)</text>
+        <text x="460" y="75" text-anchor="middle" fill="#cbd5e1" font-size="10" font-family="Pretendard, sans-serif">말이 뒤섞인 원본 메모를 AI가 읽기 좋은 구조로 분해</text>
+
+        <line x1="460" y1="88" x2="460" y2="112" stroke="#94a3b8" stroke-width="2.2" marker-end="url(#brainArrow)" />
+
+        <rect x="280" y="116" width="360" height="50" rx="10" fill="rgba(34,197,94,0.18)" stroke="rgba(74,222,128,0.6)" stroke-width="2.4" />
+        <text x="460" y="139" text-anchor="middle" fill="#dcfce7" font-size="12" font-family="Pretendard, sans-serif" font-weight="800">AI 중간 정리</text>
+        <text x="460" y="156" text-anchor="middle" fill="#bbf7d0" font-size="9" font-family="Pretendard, sans-serif">중복 제거 · 핵심 질문 도출 · 빠진 조건 체크</text>
+
+        <line x1="460" y1="168" x2="250" y2="208" stroke="#94a3b8" stroke-width="2" marker-end="url(#brainArrow)" />
+        <line x1="460" y1="168" x2="460" y2="208" stroke="#94a3b8" stroke-width="2" marker-end="url(#brainArrow)" />
+        <line x1="460" y1="168" x2="670" y2="208" stroke="#94a3b8" stroke-width="2" marker-end="url(#brainArrow)" />
+
+        <rect x="80" y="212" width="240" height="72" rx="10" fill="rgba(244,114,182,0.16)" stroke="rgba(244,114,182,0.55)" stroke-width="2.2" />
+        <text x="200" y="236" text-anchor="middle" fill="#fbcfe8" font-size="11" font-family="Pretendard, sans-serif" font-weight="800">역할 1: 기획자 AI</text>
+        <text x="200" y="254" text-anchor="middle" fill="#fce7f3" font-size="9" font-family="Pretendard, sans-serif">고객 문제 정의</text>
+        <text x="200" y="268" text-anchor="middle" fill="#fce7f3" font-size="9" font-family="Pretendard, sans-serif">기능 우선순위</text>
+
+        <rect x="340" y="212" width="240" height="72" rx="10" fill="rgba(56,189,248,0.16)" stroke="rgba(56,189,248,0.55)" stroke-width="2.2" />
+        <text x="460" y="236" text-anchor="middle" fill="#bae6fd" font-size="11" font-family="Pretendard, sans-serif" font-weight="800">역할 2: 개발자 AI</text>
+        <text x="460" y="254" text-anchor="middle" fill="#e0f2fe" font-size="9" font-family="Pretendard, sans-serif">데이터 구조 제안</text>
+        <text x="460" y="268" text-anchor="middle" fill="#e0f2fe" font-size="9" font-family="Pretendard, sans-serif">구현 순서 초안</text>
+
+        <rect x="600" y="212" width="240" height="72" rx="10" fill="rgba(251,191,36,0.18)" stroke="rgba(251,191,36,0.58)" stroke-width="2.2" />
+        <text x="720" y="236" text-anchor="middle" fill="#fde68a" font-size="11" font-family="Pretendard, sans-serif" font-weight="800">역할 3: 개발관리 AI</text>
+        <text x="720" y="254" text-anchor="middle" fill="#fef3c7" font-size="9" font-family="Pretendard, sans-serif">일정·리스크·범위</text>
+        <text x="720" y="268" text-anchor="middle" fill="#fef3c7" font-size="9" font-family="Pretendard, sans-serif">이번 주 실행 항목</text>
+
+        <line x1="200" y1="286" x2="460" y2="326" stroke="#94a3b8" stroke-width="2" marker-end="url(#brainArrow)" />
+        <line x1="460" y1="286" x2="460" y2="326" stroke="#94a3b8" stroke-width="2" marker-end="url(#brainArrow)" />
+        <line x1="720" y1="286" x2="460" y2="326" stroke="#94a3b8" stroke-width="2" marker-end="url(#brainArrow)" />
+
+        <rect x="230" y="330" width="460" height="36" rx="8" fill="rgba(34,197,94,0.18)" stroke="rgba(74,222,128,0.55)" stroke-width="2.2" />
+        <text x="460" y="352" text-anchor="middle" fill="#dcfce7" font-size="11" font-family="Pretendard, sans-serif" font-weight="800">결과: 쇼핑몰 실행 문서 (기획안 + 개발 항목 + 일정표)</text>
+      </svg>
+    </div>
+    {% if foot %}
+      <p class="home-web-foot">{{ foot }}</p>
+    {% endif %}
+  {% elif kind == "diagram" %}
+    <div class="home-web-diagram-wrap" role="img" aria-label="집 홈서버 웹 운영 흐름도">
+      <svg class="home-web-svg" viewBox="0 0 920 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="hwGradNet" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="rgba(56,189,248,0.35)" />
+            <stop offset="100%" stop-color="rgba(129,140,248,0.35)" />
+          </linearGradient>
+          <marker id="hwArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8 z" fill="#cbd5e1" />
+          </marker>
+        </defs>
+
+        <text x="460" y="28" text-anchor="middle" fill="#e2e8f0" font-size="14" font-family="Pretendard, sans-serif" font-weight="700">고객 접속 (인터넷)</text>
+        <rect x="320" y="40" width="280" height="44" rx="8" fill="url(#hwGradNet)" stroke="rgba(56,189,248,0.55)" stroke-width="2.4" />
+        <text x="460" y="62" text-anchor="middle" fill="#f1f5f9" font-size="12" font-family="Pretendard, sans-serif">고객 · 모바일 · PC 브라우저</text>
+        <text x="460" y="78" text-anchor="middle" fill="#cbd5e1" font-size="10" font-family="Pretendard, sans-serif">HTTPS 요청</text>
+
+        <line x1="460" y1="84" x2="460" y2="108" stroke="#64748b" stroke-width="2.4" marker-end="url(#hwArrow)" />
+
+        <rect x="300" y="112" width="320" height="52" rx="8" fill="rgba(30,41,59,0.92)" stroke="rgba(148,163,184,0.45)" stroke-width="2.4" />
+        <text x="460" y="134" text-anchor="middle" fill="#e2e8f0" font-size="11" font-family="Pretendard, sans-serif" font-weight="700">외부 공개 연결 (택1 또는 병행)</text>
+        <text x="460" y="152" text-anchor="middle" fill="#cbd5e1" font-size="9" font-family="Pretendard, sans-serif">포트포워드(80/443) · DDNS · Cloudflare Tunnel</text>
+
+        <line x1="460" y1="164" x2="460" y2="188" stroke="#64748b" stroke-width="2.4" marker-end="url(#hwArrow)" />
+
+        <rect x="340" y="192" width="240" height="40" rx="6" fill="rgba(51,65,85,0.92)" stroke="rgba(251,191,36,0.5)" stroke-width="2.4" />
+        <text x="460" y="216" text-anchor="middle" fill="#fde68a" font-size="11" font-family="Pretendard, sans-serif" font-weight="700">집 공유기 (LAN)</text>
+
+        <line x1="460" y1="232" x2="460" y2="252" stroke="#64748b" stroke-width="2.4" marker-end="url(#hwArrow)" />
+
+        <rect x="260" y="256" width="400" height="48" rx="8" fill="rgba(34,197,94,0.22)" stroke="rgba(52,211,153,0.55)" stroke-width="2.4" />
+        <text x="460" y="278" text-anchor="middle" fill="#bbf7d0" font-size="11" font-family="Pretendard, sans-serif" font-weight="700">집 미니 PC 서버 (항상 켜 두는 장치)</text>
+        <text x="460" y="294" text-anchor="middle" fill="#cbd5e1" font-size="9" font-family="Pretendard, sans-serif">Linux · (선택) Docker</text>
+
+        <line x1="460" y1="304" x2="460" y2="318" stroke="#64748b" stroke-width="2.4" marker-end="url(#hwArrow)" />
+        <text x="460" y="316" text-anchor="middle" fill="#cbd5e1" font-size="8" font-family="Pretendard, sans-serif">웹서버가 요청 분배</text>
+
+        <rect x="120" y="322" width="200" height="44" rx="6" fill="rgba(99,102,241,0.24)" stroke="rgba(129,140,248,0.5)" stroke-width="2.4" />
+        <text x="220" y="342" text-anchor="middle" fill="#e0e7ff" font-size="10" font-family="Pretendard, sans-serif" font-weight="700">웹서버 · 리버스 프록시</text>
+        <text x="220" y="356" text-anchor="middle" fill="#cbd5e1" font-size="8" font-family="Pretendard, sans-serif">Nginx · Caddy (쇼핑몰 웹서버)</text>
+
+        <rect x="360" y="322" width="200" height="44" rx="6" fill="rgba(61,255,156,0.2)" stroke="rgba(61,255,156,0.45)" stroke-width="2.4" />
+        <text x="460" y="342" text-anchor="middle" fill="#86efac" font-size="10" font-family="Pretendard, sans-serif" font-weight="700">쇼핑몰 앱 서버</text>
+        <text x="460" y="356" text-anchor="middle" fill="#cbd5e1" font-size="8" font-family="Pretendard, sans-serif">상품 · 장바구니 · 주문 · 결제 상태</text>
+
+        <rect x="600" y="322" width="200" height="44" rx="6" fill="rgba(232,168,56,0.22)" stroke="rgba(251,191,36,0.45)" stroke-width="2.4" />
+        <text x="700" y="342" text-anchor="middle" fill="#fde68a" font-size="10" font-family="Pretendard, sans-serif" font-weight="700">주문 데이터</text>
+        <text x="700" y="356" text-anchor="middle" fill="#cbd5e1" font-size="8" font-family="Pretendard, sans-serif">DB · 업로드 파일 · 백업</text>
+
+        <line x1="320" y1="344" x2="360" y2="344" stroke="#64748b" stroke-width="2" marker-end="url(#hwArrow)" />
+        <line x1="560" y1="344" x2="600" y2="344" stroke="#64748b" stroke-width="2" marker-end="url(#hwArrow)" />
+      </svg>
+    </div>
+    {% if foot %}
+      <p class="home-web-foot">{{ foot }}</p>
+    {% endif %}
+  {% elif kind == "examples" and examples %}
+    <div class="home-web-examples" role="list">
+      {% for ex in examples %}
+        <article class="home-web-card" role="listitem">
+          <span class="home-web-card-tag">{{ ex.tag }}</span>
+          <h2 class="home-web-card-title">{{ ex.title }}</h2>
+          <p class="home-web-card-desc">{{ ex.desc }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endblock %}

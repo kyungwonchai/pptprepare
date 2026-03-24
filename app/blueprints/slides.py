@@ -14,9 +14,8 @@ from app.data.vibe_stack import (
     VIBE_FLOW_STEPS,
 )
 from app.data.slide_agent_features import AI_FEATURE_SLIDES
-from app.data.slide_edu_cline_web import EDU_CLINE_WEB_SLIDES
 from app.data.slide_tool_tutorials import TOOL_TUTORIAL_SLIDES
-from app.data.slide_vibe_playbook import VIBE_PLAYBOOK_SLIDES
+from app.data.slide_home_web import HOME_WEB_SLIDES
 from app.data.slide_agent_products import AI_FOUR_OVERVIEW
 from app.data.slide_api_vibe import API_VIBE_PAGE
 from app.data.slide_free_apis import (
@@ -46,19 +45,9 @@ def _tool_tutorial_slide(tutorial_index: int):
     return render_template("slides/slide_tutorial_bubbles.html", **row)
 
 
-def _edu_cline_web_slide(index: int):
-    row = EDU_CLINE_WEB_SLIDES[index]
-    return render_template("slides/slide_tutorial_bubbles.html", **row)
-
-
-def _vibe_playbook_slide(playbook_index: int):
-    pb = VIBE_PLAYBOOK_SLIDES[playbook_index]
-    return render_template(
-        "slides/slide_knowhow.html",
-        sections=pb["sections"],
-        page_title=pb["page_title"],
-        kicker=pb["kicker"],
-    )
+def _home_web_slide(index: int):
+    row = HOME_WEB_SLIDES[index]
+    return render_template("slides/slide_home_web.html", **row)
 
 
 @slides_bp.route("/")
@@ -177,27 +166,27 @@ def slide_20():
 
 @slides_bp.route("/21")
 def slide_21():
-    return _vibe_playbook_slide(0)
+    return _home_web_slide(0)
 
 
 @slides_bp.route("/22")
 def slide_22():
-    return _vibe_playbook_slide(1)
+    return _home_web_slide(1)
 
 
 @slides_bp.route("/23")
 def slide_23():
-    return _vibe_playbook_slide(2)
+    return _home_web_slide(2)
 
 
 @slides_bp.route("/24")
 def slide_24():
-    return _vibe_playbook_slide(3)
+    return _home_web_slide(3)
 
 
 @slides_bp.route("/25")
 def slide_25():
-    return _vibe_playbook_slide(4)
+    return _home_web_slide(4)
 
 
 @slides_bp.route("/26")
@@ -248,26 +237,6 @@ def slide_34():
 @slides_bp.route("/35")
 def slide_35():
     return _tool_tutorial_slide(9)
-
-
-@slides_bp.route("/36")
-def slide_36():
-    return _edu_cline_web_slide(0)
-
-
-@slides_bp.route("/37")
-def slide_37():
-    return _edu_cline_web_slide(1)
-
-
-@slides_bp.route("/38")
-def slide_38():
-    return _edu_cline_web_slide(2)
-
-
-@slides_bp.route("/39")
-def slide_39():
-    return _edu_cline_web_slide(3)
 
 
 # 예전 주소 호환

@@ -41,8 +41,9 @@ def capture_slide_frames(
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         try:
+            # HD 16:9 — 슬라이드 CSS(vw/vh)와 맞추고 PPTX 16:9 슬라이드에 그대로 맞게 캡처
             context = browser.new_context(
-                viewport={"width": 1280, "height": 720},
+                viewport={"width": 1920, "height": 1080},
                 device_scale_factor=2,
             )
             page = context.new_page()

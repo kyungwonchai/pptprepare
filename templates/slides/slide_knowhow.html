@@ -1,6 +1,17 @@
 {% extends "base_slide.html" %}
 {% block title %}{{ app_name }} — {{ page_title }}{% endblock %}
-{% block body_class %}slide-knowhow ppt-slide{% endblock %}
+{% block body_class %}slide-knowhow ppt-slide slide-knowhow--pipeline{% endblock %}
+
+{% macro knowhow_step(item) %}
+  <div class="knowhow-pipeline-step knowhow-pipeline-step--{{ item.tone }}" role="listitem">
+    <span class="knowhow-pipeline-step-num">{{ item.step }}</span>
+    <div class="knowhow-pipeline-step-card">
+      <strong class="knowhow-pipeline-step-name">{{ item.name }}</strong>
+      <p class="knowhow-pipeline-step-detail">{{ item.detail }}</p>
+    </div>
+  </div>
+{% endmacro %}
+
 {% block slide_content %}
   <header class="ppt-slide-header">
     <p class="ppt-kicker">{{ kicker|default("운영 노하우") }}</p>
@@ -8,11 +19,42 @@
   </header>
   <div class="ppt-knowhow-cols">
     {% for sec in sections %}
-      <section class="ppt-knowhow-block">
+      <section class="ppt-knowhow-block{% if sec.pipeline %} ppt-knowhow-block--has-pipeline{% endif %}">
         <h2 class="ppt-knowhow-h">{{ sec.title }}</h2>
-        {% for para in sec.body %}
-          <p class="ppt-knowhow-line">{{ para }}</p>
-        {% endfor %}
+        {% if sec.pipeline %}
+          {% set pl = sec.pipeline %}
+          {% if pl|length == 5 %}
+            <div class="knowhow-pipeline knowhow-pipeline--split" role="list" aria-label="단계">
+              <div class="knowhow-pipeline-row">
+                {% for item in pl[0:3] %}
+                  {{ knowhow_step(item) }}
+                  {% if not loop.last %}<span class="knowhow-pipeline-connector" aria-hidden="true">→</span>{% endif %}
+                {% endfor %}
+              </div>
+              <div class="knowhow-pipeline-between-rows" aria-hidden="true">
+                <span class="knowhow-pipeline-between-line"></span>
+              </div>
+              <div class="knowhow-pipeline-row knowhow-pipeline-row--bottom">
+                {% for item in pl[3:5] %}
+                  {{ knowhow_step(item) }}
+                  {% if not loop.last %}<span class="knowhow-pipeline-connector" aria-hidden="true">→</span>{% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          {% else %}
+            <div class="knowhow-pipeline knowhow-pipeline--row" role="list" aria-label="단계">
+              {% for item in pl %}
+                {{ knowhow_step(item) }}
+                {% if not loop.last %}<span class="knowhow-pipeline-connector" aria-hidden="true">→</span>{% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endif %}
+        {% if sec.body %}
+          {% for para in sec.body %}
+            <p class="ppt-knowhow-line">{{ para }}</p>
+          {% endfor %}
+        {% endif %}
       </section>
     {% endfor %}
   </div>
